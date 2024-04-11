@@ -173,6 +173,8 @@
 	- 클래스는 상속한다 vs 인터페이스는 구현한다
 	- 클래스는 상속시 별다른 문제없음 vs 인터페이스는 구현을 하면 약속을 지키지 않으면 오류표시
 	- 인터페이스에서 약속한 메서드를 구현안하면 빌드 안됨!
+   
+   	![인터페이스_설명](https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs001.png)
 
 - 추상클래스(Abstract Class)
 	- Virtual 매서드하고도 유사
