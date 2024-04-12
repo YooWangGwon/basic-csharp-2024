@@ -1,4 +1,8 @@
-﻿namespace ex03_loops
+﻿// project: ex03_loops
+// date : 240411
+// desc : foreach
+
+namespace ex03_loops
 {
     internal class Program
     {

@@ -1,4 +1,8 @@
-﻿namespace ex06_properties
+﻿// project : ex06_properties
+// date : 240411
+// desc : properties
+
+namespace ex06_properties
 {
     class Kiturami
     {

@@ -1,4 +1,8 @@
-﻿namespace ex04_methods
+﻿// project : ex04_methods
+// date : 240411
+// desc : method
+
+namespace ex04_methods
 {
     internal class Program
     {

@@ -1,4 +1,8 @@
-﻿namespace hello_world // 프로그램  소스의 가장 큰 단위 : namespace -> 파이썬의 모듈, 라이브러리 역할
+﻿// project : ex01_hellocsharp
+// date : 240411
+// desc : C# 시작 2
+
+namespace hello_world // 프로그램  소스의 가장 큰 단위 : namespace -> 파이썬의 모듈, 라이브러리 역할
 {
     internal class Program  // 접근제한자 class 파일명/internal은 class 구조체의 private과 유사함/파일명과 클래스명이 달라도 됨
     {

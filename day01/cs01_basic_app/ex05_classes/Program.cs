@@ -1,4 +1,8 @@
-﻿using System.Runtime.Intrinsics.X86;
+﻿// project : ex05_classes
+// date : 240411
+// desc : classes
+
+using System.Runtime.Intrinsics.X86;
 
 namespace ex05_classes
 {

@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hello_csharp", "hello_csharp\hello_csharp.csproj", "{EFA454B2-C701-4D15-A7BE-D2158CA01B1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ex01_hello_csharp", "hello_csharp\ex01_hello_csharp.csproj", "{EFA454B2-C701-4D15-A7BE-D2158CA01B1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hello_world", "hello_world\hello_world.csproj", "{D211C0CB-5A89-45D9-9F49-9D9053AE0AF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ex02_hello_world", "hello_world\ex02_hello_world.csproj", "{D211C0CB-5A89-45D9-9F49-9D9053AE0AF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex03_loops", "ex03_loops\ex03_loops.csproj", "{DE5FE342-9AF5-48D6-A652-07E03A8DD252}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ex03_loops", "ex03_loops\ex03_loops.csproj", "{DE5FE342-9AF5-48D6-A652-07E03A8DD252}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex04_methods", "ex04_methods\ex04_methods.csproj", "{15369E45-18EF-4275-A414-37A234EDC0F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ex04_methods", "ex04_methods\ex04_methods.csproj", "{15369E45-18EF-4275-A414-37A234EDC0F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex05_classes", "ex05_classes\ex05_classes.csproj", "{625CFC29-9D13-4836-A1FD-1A7F58F55AE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ex05_classes", "ex05_classes\ex05_classes.csproj", "{625CFC29-9D13-4836-A1FD-1A7F58F55AE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex06_properties", "ex06_properties\ex06_properties.csproj", "{CEAAAA64-B803-424F-BFFF-6AF8AB5FF065}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ex06_properties", "ex06_properties\ex06_properties.csproj", "{CEAAAA64-B803-424F-BFFF-6AF8AB5FF065}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
