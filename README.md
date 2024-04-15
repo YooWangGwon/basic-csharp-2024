@@ -250,6 +250,7 @@
 	```
 	- 대리자 호출 시 함수(메서드) 자체를 전달
 	- 이벤트 : 컴퓨터 내에서 발생하는 객체의 사건들
+	- 익명메서드 사용
 	- delegate --> event
 	- 완품개발 --> 이벤트 기반(Event driven) 프로그래밍
 
@@ -258,13 +259,105 @@
 	![region주석](https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs002.png)
 
 
-## 3일차
+## 3일차(24.04.15)
 - 람다식
-- LINQ
-- 애트리뷰트
-- dynamic 형식(C#에서 파이썬 실행)
-- Winform UI 개발 + 파일 + 스레드
-- 가비지 컬렉션
+	- 익명(무명) 메서드(Anonymous Function)를 만드는 방식 중 하나
+	- 무명함수를 작성하기 위해서는 먼저 대리자로 무명함수의 모습을 결정
+	```cs
+	Calculate calc2 = (a, b) => a + b; //(int a, int b) => a + b;  //{ return a + b; };
+	Console.WriteLine($"람다식 calc2 계산 결과 : {calc2(10, 5)}");
+	```
+	- Func 대리자와 Action 대리자
+		- Fun대리자 : 반환 값이 있는 익명 메소드/무명 함수용 대리자
+		```cs
+		Func<int> func1 = () => 10;
+		Console.WriteLine($"func1의 값 = {func1()}");  // 10
 
+		Func<int, int> func2 = (a) => a * 5;
+        Console.WriteLine($"func2의 값 = {func2(5)}");    // 25
+		```
+
+		- Action 대리자 : 반환 값이 없는 익명 메소드/무명 함수용 대리자
+		```cs
+		Action<double, double> act2 = (x, y) =>
+		{
+			double res = x / y;
+			Console.WriteLine(res);
+		};
+		```
+
+	- 익명 메서드 사용시 코딩량 줄여줌, 프로퍼티 사용시에도 코딩양이 줄어듬
+	```cs
+	public double Point
+	{
+		get => point;
+		set => point = value;
+	}
+	```
+
+	- 익명 메서드 사용시 마다 대리자를 선언해야하니 때문에
+		- Func, Action을 MS에서 미리 만들어둠
+
+- LINQ(Language Integrated Query)
+	- C#에 통합된 데이터 질의 기능(DB SQL과 거의 동일)
+	```cs
+	var profiles2 = from profile in arrProfiles
+					where profile.Height < 175
+					orderby profile.Height
+					select profile;
+	```
+
+	- group by에 집계함수가 필수가 아닌 것 외에는 SQL과 거의 동일
+	```cs
+	var groupProfiles = from p in arrProfiles
+						orderby p.Height descending
+						group p by p.Height < 175 into g
+						select new { GroupKey = g.Key, Profiles = g };
+	```
+
+	- 단, 키워드 사용순서가 다른 것을 인지
+	- LINQ만 고집하면 안됨. 기존의 C# 로직을 사용해야 할 경우도 있음
+
+- 리플렉션, 애트리뷰트
+	- 리플렉션 : 런타임에 객체의 형식(Type) 정보를 들여다보는 기능
+	```cs
+	int a = int.MaxValue;
+	Type type = a.GetType();
+	Console.WriteLine(a.GetType()); // System.Int32
+	```
+	- 애트리뷰트 : 코드의 메타데이터를 나타내는 데 사용되는 선언적 태그
+	```cs
+	[Obsolete("이 메서드는 다음 버전에서 폐기됩니다. NewMethod()를 사용하세요.", true)]
+	// 경고 문구 다음에 , true를 붙이면 오류로 취급하게 하여 사용을 못하게 함
+	```
+
+- C#에서 파이썬 실행
+	- dynamic 형식 : 런타임에 형식 검사가 이루어지는 데이터 형식
+	- COM 객체 사용(dynamic 형식)
+	- IronPython 라이브러리 : 파이썬을 C#에서 사용할 수 있도록 해주는 오픈소스
+	- NuGet Package : 파이썬의 pip와 같은 라이브러리 관리툴
+	- 해당 프로젝트 종속성, 마우스 오른쪽 버튼 > NuGet Package 관리
+		1. 파이썬 엔진, 스코프 객체, 설정경로 객체 생성
+		2. 해당 컴퓨터의 파이썬 경로들 설정
+		3. 실행시킬 파이썬 파일의 경로 설정
+		4. 파이썬 실행(scope 연결)
+		5. 해당 파이썬의 함수를 Func또는 Action으로 매핑
+		6. 매핑시킨 매서드를 실행
+
+- 가비지 컬렉션(GC:Garbage Collection)
+	- C/C++ 은 메모리 사용시 개발자가 직접 메모리 해제 해야함
+	- C#, java, python 등의 객체지향 언어는 Garbage Collection(쓰레기 수집기) 기능으로 프로그램이 직접 관리(★)
+	- C# 개발자는 메모리 관리에 아무것도 할게 없음!! 
+
+- Winform UI 개발 + 파일, 스레드
+	- 이벤트, 이벤트 핸들러 (대리자, 이벤트 연결)
+	- 그래픽 사용자 인터페이스를 만드는 방법
+		1. Winforms(Windows Forms)
+		2. WPF(Windows Presentation Foundation)
+	- WYSWYG(What You See IS What You Get) 방식의 GUI 프로그램 개발
+	- partial : 하나의 클래스를 여러파트로 분리하여 작업한 다음 컴파일 할 때 하나로 합치는 것 
+	- Designer.cs는 함부로 건들지 말 것
+
+## 4일차
 - WPF
 - 예제 프로젝트
