@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex18_winControlApp", "ex18_winControlApp\ex18_winControlApp.csproj", "{2C5F5DA3-C943-4948-AD04-53F5FF2FACFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C5F5DA3-C943-4948-AD04-53F5FF2FACFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C5F5DA3-C943-4948-AD04-53F5FF2FACFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C5F5DA3-C943-4948-AD04-53F5FF2FACFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C5F5DA3-C943-4948-AD04-53F5FF2FACFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2ECF9333-9677-4400-A32B-FEB236FF13FD}
+	EndGlobalSection
+EndGlobal

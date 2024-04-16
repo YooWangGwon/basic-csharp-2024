@@ -359,5 +359,33 @@
 	- Designer.cs는 함부로 건들지 말 것
 
 ## 4일차
+- 윈폼 UI 개발
+	- Windows로 윈폼 개발 학습
+	- C# UI에서 더블클릭 함부로 하지 말 것
+	- 컨트롤 Prefix
+		- ComboBox : Cbo-
+		- CheckBox : Chk-
+		- RadioButton : Rdo-
+		- TextBox : Txt-
+		- Button : Btn-
+		- TrackBar : Trb-
+		- ProgressBar : Prg-
+		- TreeView : Trv-
+		- ListView : Lsv-
+		- PictureBox : Pic-
+		- *Dialog : Dlg-
+
+	- 이벤트를 잘못 만들었을 경우 해당 이벤트를 드래그하고 DELETE 누르고 Enter
+	- alt를 누른상태로 크기를 조절하면 grab을 무시할 수 있음
+
+## 윈폼 UI 개발(계속)
+- 윈폼 UI 개발
+	- 스레드
+	- 파일 입출력
+	- 비동기 작업 앱
+	- 윈도우 탐색기 앱
+	- 도서관리 앱 with SQL Server
+	- ModernUI 앱
+	- 국가교통정보센터 CCTV 뷰 앱
+	- IoT Dummy 앱 with SQL Server
 - WPF
-- 예제 프로젝트
