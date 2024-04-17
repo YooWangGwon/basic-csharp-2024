@@ -72,6 +72,7 @@ namespace ex19_asyncs
                 {   // 존재하지 않는 파일을 만들기 -> FileMode.Create
                     // 1MByte 버퍼를 생성
                     byte[] buffer = new byte[1024 * 1024]; // 1024(byte) = 1kb, 1024*1024 = 1Mb
+                                                           // 테스트 시 10*10으로 변경
                     // fromStream에 들어온 파일을 1MB씩 달라서 버퍼에 담은 다음
                     // toStream에 1MB씩 붙여넣음
                     int nRead = 0;
@@ -107,7 +108,7 @@ namespace ex19_asyncs
             {   
                 using (FileStream toStream = new FileStream(destPath, FileMode.Create))
                 {   
-                    byte[] buffer = new byte[1024 * 1024]; // 1024(byte) = 1kb, 1024*1024 = 1Mb
+                    byte[] buffer = new byte[1024 * 1024]; // 테스트 시 10*10으로 변경
                     int nRead = 0;
                     while ((nRead = await fromStream.ReadAsync(buffer, 0, buffer.Length)) != 0) // 원본파일에서 읽어오는 byte값이 0일 때 까지
                     {
