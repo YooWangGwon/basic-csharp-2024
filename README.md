@@ -358,7 +358,7 @@
 	- partial : 하나의 클래스를 여러파트로 분리하여 작업한 다음 컴파일 할 때 하나로 합치는 것 
 	- Designer.cs는 함부로 건들지 말 것
 
-## 4일차
+## 4일차(24.04.16)
 - 윈폼 UI 개발
 	- Windows로 윈폼 개발 학습
 	- C# UI에서 더블클릭 함부로 하지 말 것
@@ -374,18 +374,40 @@
 		- ListView : Lsv-
 		- PictureBox : Pic-
 		- *Dialog : Dlg-
+		- RichTextBox : Rtx-
+		- BackgroundWorker : Bgw-
 
 	- 이벤트를 잘못 만들었을 경우 해당 이벤트를 드래그하고 DELETE 누르고 Enter
 	- alt를 누른상태로 크기를 조절하면 grab을 무시할 수 있음
 
-## 윈폼 UI 개발(계속)
-- 윈폼 UI 개발
+## 5일차(24.04.17)
+- 윈폼 UI 개발(계속)
 	- 스레드
-	- 파일 입출력
+		- 프로세르를 나누어서 동시에 여러가지 작업을 진행
+		- 스레드 사용하기 불편한
+		- C#의 BackGroundWorker 클래스를 추가 -> Thread를 사용하기 편하게 만든 클래스
+
+	- 파일 입출력 추가
+		- 리치 텍스트 박스(like MSWord, 한글워드)로 파일저장 
+
+		<img src = "https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs003.png" width = "850">
+
 	- 비동기 작업 앱
+		- 프로그램의 응답없음을 최소화
+		- 가장 트렌드가 되는 작업방법
+		- 백그라운드 처리는 Thread, BackgroundWorker와 유사 
+		- async, await 키워드
+
+		![비동기앱](https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs004.png)
+
+## 6일차
+- 예제 프로젝트
 	- 윈도우 탐색기 앱
 	- 도서관리 앱 with SQL Server
 	- ModernUI 앱
 	- 국가교통정보센터 CCTV 뷰 앱
 	- IoT Dummy 앱 with SQL Server
+
 - WPF
+
+## 개인포트폴리오
