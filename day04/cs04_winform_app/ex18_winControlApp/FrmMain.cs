@@ -1,40 +1,40 @@
 using System.ComponentModel;
-using System.Threading; // ½º·¹µå »ç¿ë
+using System.Threading; // ìŠ¤ë ˆë“œ ì‚¬ìš©
 namespace ex18_winControlApp
 {
     public partial class FrmMain : Form
     {
-        Random rand = new Random(); // Æ®¸®ºä ³ëµåÀÌ¸§À¸·Î »ç¿ëÇÒ ·£´ı°ª
+        Random rand = new Random(); // íŠ¸ë¦¬ë·° ë…¸ë“œì´ë¦„ìœ¼ë¡œ ì‚¬ìš©í•  ëœë¤ê°’
         public FrmMain()
         {
-            InitializeComponent();  // µğÀÚÀÌ³Ê¿¡¼­ Á¤ÀÇÇÑ È­¸é±¸¼º ÃÊ±âÈ­
+            InitializeComponent();  // ë””ìì´ë„ˆì—ì„œ ì •ì˜í•œ í™”ë©´êµ¬ì„± ì´ˆê¸°í™”
 
-            LsvDummy.Columns.Add("ÀÌ¸§");
-            LsvDummy.Columns.Add("±íÀÌ");
+            LsvDummy.Columns.Add("ì´ë¦„");
+            LsvDummy.Columns.Add("ê¹Šì´");
 
-            GrbEditor.Text = "ÅØ½ºÆ®¿¡µğÅÍ";  // ÄÚµå ºñÇÏÀÎµå µğÀÚÀÎ ¼¼ÆÃ
+            GrbEditor.Text = "í…ìŠ¤íŠ¸ì—ë””í„°";  // ì½”ë“œ ë¹„í•˜ì¸ë“œ ë””ìì¸ ì„¸íŒ…
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            var Fonts = FontFamily.Families; // ÇöÀç OS ³»¿¡ ¼³Ä¡µÈ Font¸¦ ´Ù °¡Á®¿Í
+            var Fonts = FontFamily.Families; // í˜„ì¬ OS ë‚´ì— ì„¤ì¹˜ëœ Fontë¥¼ ë‹¤ ê°€ì ¸ì™€
             foreach (var font in Fonts)
             {
                 CboFonts.Items.Add(font.Name);
             }
         }
-        // ±ÛÀÚÃ¼, º¼µå, ÀÌÅÅ¸¯À¸·Î º¯°æÇÏ´Â ¸Ş¼­µå
+        // ê¸€ìì²´, ë³¼ë“œ, ì´íƒ¤ë¦­ìœ¼ë¡œ ë³€ê²½í•˜ëŠ” ë©”ì„œë“œ
         void ChangeFont()
         {
-            if (CboFonts.SelectedIndex < 0) // Font ¸ñ·Ï¿¡¼­ ¾Æ¹«°Íµµ ¼±ÅÃ ¾ÈÇßÀ» °æ¿ì(º¸Åë -1ÀÌ´Ù)
+            if (CboFonts.SelectedIndex < 0) // Font ëª©ë¡ì—ì„œ ì•„ë¬´ê²ƒë„ ì„ íƒ ì•ˆí–ˆì„ ê²½ìš°(ë³´í†µ -1ì´ë‹¤)
                 return;
 
-            FontStyle style = FontStyle.Regular;    // ÀÏ¹İ ±ÛÀÚ(º¼µåX, ÀÌÅÅ¸¯X)
+            FontStyle style = FontStyle.Regular;    // ì¼ë°˜ ê¸€ì(ë³¼ë“œX, ì´íƒ¤ë¦­X)
 
-            if (ChkBold.Checked)    // '±½°Ô'¶ó´Â Ã¼Å©¹Ú½º¸¦ Ã¼Å©ÇÒ °æ¿ì
-                style |= FontStyle.Bold;    // |:¿©·¯°¡Áö ¼Ó¼ºµéÀ» Á¢¸ñÇÒ ¶§ »ç¿ë
+            if (ChkBold.Checked)    // 'êµµê²Œ'ë¼ëŠ” ì²´í¬ë°•ìŠ¤ë¥¼ ì²´í¬í•  ê²½ìš°
+                style |= FontStyle.Bold;    // |:ì—¬ëŸ¬ê°€ì§€ ì†ì„±ë“¤ì„ ì ‘ëª©í•  ë•Œ ì‚¬ìš©
 
-            if (ChkItalic.Checked)  // ÀÌÅÅ¸¯ Ã¼Å©¹Ú½º¸¦ Ã¼Å©ÇÏ¸é
+            if (ChkItalic.Checked)  // ì´íƒ¤ë¦­ ì²´í¬ë°•ìŠ¤ë¥¼ ì²´í¬í•˜ë©´
                 style |= FontStyle.Italic;
 
             TxtSampleText.Font = new Font((string)CboFonts.SelectedItem, 12, style);
@@ -45,14 +45,14 @@ namespace ex18_winControlApp
             LsvDummy.Items.Clear();
             foreach (TreeNode node in TrvDummy.Nodes)
             {
-                TreeToList(node);   // ¿À¹ö·Îµù
+                TreeToList(node);   // ì˜¤ë²„ë¡œë”©
             }
         }
 
         private void TreeToList(TreeNode node)
         {
             //throw new NotImplementedException();
-            LsvDummy.Items.Add( // ¸®½ºÆ®ºä¿¡ ¾ÆÀÌÅÛ Ãß°¡
+            LsvDummy.Items.Add( // ë¦¬ìŠ¤íŠ¸ë·°ì— ì•„ì´í…œ ì¶”ê°€
                 new ListViewItem(
                     new string[] { node.Text, node.FullPath.Count(f => f == '\\').ToString() }
                     )
@@ -77,61 +77,61 @@ namespace ex18_winControlApp
         {
             ChangeFont();
         }
-        // Æ®·¢¹Ù ½ºÅ©·Ñ ÀÌº¥Æ® ÇÚµé·¯
+        // íŠ¸ë™ë°” ìŠ¤í¬ë¡¤ ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬
         private void TrbDummy_Scroll(object sender, EventArgs e)
         {
-            PrgDummy.Value = TrbDummy.Value;    // Æ®·¢¹Ù Æ÷ÀÎÅÍ¸¦ ¿Å±â¸é ÇÁ·Î±×·¹½º¹Ù °ªµµ °°ÀÌ º¯°æ
+            PrgDummy.Value = TrbDummy.Value;    // íŠ¸ë™ë°” í¬ì¸í„°ë¥¼ ì˜®ê¸°ë©´ í”„ë¡œê·¸ë ˆìŠ¤ë°” ê°’ë„ ê°™ì´ ë³€ê²½
         }
 
         private void BtnModal_Click(object sender, EventArgs e)
         {
             Form FrmModal = new Form();
-            FrmModal.Text = "¸ğ´ŞÃ¢";
+            FrmModal.Text = "ëª¨ë‹¬ì°½";
             FrmModal.Width = 300;
             FrmModal.Height = 100;
             FrmModal.BackColor = Color.Red;
-            // ¸ğ´ŞÃ¢ÀÌ ¶ç¾îÁö´Â À§Ä¡¸¦ ºÎ¸ğÃ¢ÀÇ Áß¾ÓÀ¸·Î ¼³Á¤
+            // ëª¨ë‹¬ì°½ì´ ë„ì–´ì§€ëŠ” ìœ„ì¹˜ë¥¼ ë¶€ëª¨ì°½ì˜ ì¤‘ì•™ìœ¼ë¡œ ì„¤ì •
             FrmModal.StartPosition = FormStartPosition.CenterParent;
-            FrmModal.ShowDialog();  // ¸ğ´ŞÃ¢ ¶ç¿ì±â
+            FrmModal.ShowDialog();  // ëª¨ë‹¬ì°½ ë„ìš°ê¸°
 
         }
 
         private void BtnModaless_Click(object sender, EventArgs e)
         {
             Form FrmModaless = new Form();
-            FrmModaless.Text = "¸ğ´Ş¸®½ºÃ¢";
+            FrmModaless.Text = "ëª¨ë‹¬ë¦¬ìŠ¤ì°½";
             FrmModaless.Width = 300;
             FrmModaless.Height = 100;
             FrmModaless.BackColor = Color.Green;
-            // ¸ğ´Ş¸®½ºÃ¢À» ºÎ¸ğ Á¤ Áß¾Ó¿¡ À§Ä¡ÇÒ ¶§´Â ¾Æ·¡¿Í °°ÀÌ ÀÛ¾÷ÇØ¾ß ÇÔ.
+            // ëª¨ë‹¬ë¦¬ìŠ¤ì°½ì„ ë¶€ëª¨ ì • ì¤‘ì•™ì— ìœ„ì¹˜í•  ë•ŒëŠ” ì•„ë˜ì™€ ê°™ì´ ì‘ì—…í•´ì•¼ í•¨.
             FrmModaless.StartPosition = FormStartPosition.Manual;
-            FrmModaless.Location = new Point(this.Location.X + (this.Width - FrmModaless.Width) / 2, // ³ªÀÇ À§Ä¡°ª¿¡ 
+            FrmModaless.Location = new Point(this.Location.X + (this.Width - FrmModaless.Width) / 2, // ë‚˜ì˜ ìœ„ì¹˜ê°’ì— 
                                            this.Location.Y + (this.Height - FrmModaless.Height) / 2);
-            FrmModaless.Show(this);  // ¸ğ´Ş¸®½ºÃ¢ ¶ç¿ì±â
+            FrmModaless.Show(this);  // ëª¨ë‹¬ë¦¬ìŠ¤ì°½ ë„ìš°ê¸°
         }
 
         private void BtnMsgBox_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(TxtSampleText.Text, "¸Ş½ÃÁö ¹Ú½º", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show(TxtSampleText.Text, "ë©”ì‹œì§€ ë°•ìŠ¤", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void BtnQuestion_Click(object sender, EventArgs e)
         {
-            var res = MessageBox.Show("ÁÁ¾Æ¿ä?", "Áú¹®", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            var res = MessageBox.Show("ì¢‹ì•„ìš”?", "ì§ˆë¬¸", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
             {
-                MessageBox.Show("³× ÁÁ¾Æ¿ä!");
+                MessageBox.Show("ë„¤ ì¢‹ì•„ìš”!");
             }
             else if (res == DialogResult.No)
             {
-                MessageBox.Show("¾Æ´Ï¿ä Á¤¸» ½È¾î¿ä!!");
+                MessageBox.Show("ì•„ë‹ˆìš” ì •ë§ ì‹«ì–´ìš”!!");
             }
         }
-        // À©µµ¿ì Á¾·á ¹öÆ°À» Å¬¸¯ÇßÀ» ¶§ ¹ß»ıÇÏ´Â ÀÌº¥Æ® ÇÚµé·¯
+        // ìœˆë„ìš° ì¢…ë£Œ ë²„íŠ¼ì„ í´ë¦­í–ˆì„ ë•Œ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var res = MessageBox.Show("Á¤¸» Á¾·áÇÏ½Ã°Ú½À´Ï±î?", "Á¾·á¿©ºÎ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (res == DialogResult.No) e.Cancel = true;    // Á¾·á Ãë¼Ò
+            var res = MessageBox.Show("ì •ë§ ì¢…ë£Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "ì¢…ë£Œì—¬ë¶€", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.No) e.Cancel = true;    // ì¢…ë£Œ ì·¨ì†Œ
         }
 
         private void BtnAddRoot_Click(object sender, EventArgs e)
@@ -143,21 +143,21 @@ namespace ex18_winControlApp
         private void BtnAddChild_Click(object sender, EventArgs e)
         {
             if (TrvDummy.SelectedNode == null)
-            {    // ºÎ¸ğ³ëµå¸¦ ¼±ÅÃÇÏÁö ¾ÊÀ¸¸é
-                MessageBox.Show("¼±ÅÃÇÑ ³ëµå°¡ ¾øÀ½", "ºÎ¸ğ³ëµå ¹Ì¼±ÅÃ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // ´õÀÌ»ó ÁøÇà¾øÀÌ ¸Ş¼­µå Á¾·á
+            {    // ë¶€ëª¨ë…¸ë“œë¥¼ ì„ íƒí•˜ì§€ ì•Šìœ¼ë©´
+                MessageBox.Show("ì„ íƒí•œ ë…¸ë“œê°€ ì—†ìŒ", "ë¶€ëª¨ë…¸ë“œ ë¯¸ì„ íƒ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // ë”ì´ìƒ ì§„í–‰ì—†ì´ ë©”ì„œë“œ ì¢…ë£Œ
             }
             TrvDummy.SelectedNode.Nodes.Add(rand.Next().ToString());
             TrvDummy.SelectedNode.Expand();
-            TreeToList();   // ¸®½ºÆ®ºä¸¦ ´Ù½Ã ±×·ÁÁØ´Ù
+            TreeToList();   // ë¦¬ìŠ¤íŠ¸ë·°ë¥¼ ë‹¤ì‹œ ê·¸ë ¤ì¤€ë‹¤
         }
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
-            DlgOpenImage.Title = "ÀÌ¹ÌÁö ¿­±â";
-            // È®ÀåÀÚ¸¦ ÀÌ¹ÌÁö·Î¸¸ Á¦ÇÑÇÏ±â À§ÇÔ
+            DlgOpenImage.Title = "ì´ë¯¸ì§€ ì—´ê¸°";
+            // í™•ì¥ìë¥¼ ì´ë¯¸ì§€ë¡œë§Œ ì œí•œí•˜ê¸° ìœ„í•¨
             DlgOpenImage.Filter = "Image Files(*.bmp; *.jpg; *.png)|*.bmp; *.jpg; *.png";
-            // | ¾Õ¿¡°Å´Â Å½»ö±â¿¡¼­ÀÇ ¼³¸í, | µÚ´Â ½ÇÁúÀûÀ¸·Î ÇÊÅÍ¸µÇÒ È®ÀåÀÚ¸í
+            // | ì•ì—ê±°ëŠ” íƒìƒ‰ê¸°ì—ì„œì˜ ì„¤ëª…, | ë’¤ëŠ” ì‹¤ì§ˆì ìœ¼ë¡œ í•„í„°ë§í•  í™•ì¥ìëª…
             var res = DlgOpenImage.ShowDialog(this);
             if (res == DialogResult.OK)
             {
@@ -165,40 +165,40 @@ namespace ex18_winControlApp
                 PicNormal.Image = Bitmap.FromFile(DlgOpenImage.FileName);
             }
         }
-        // ÀÌ¹ÌÁö Å¬¸¯ ½Ã ¹ß»ıÇÏ´Â ÀÌº¥Æ® ÇÚµé·¯ 
+        // ì´ë¯¸ì§€ í´ë¦­ ì‹œ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬ 
         private void PicNormal_Click_1(object sender, EventArgs e)
         {
-            if (PicNormal.SizeMode == PictureBoxSizeMode.Normal)    // ºÒ·¯¿Â ÀÌ¹ÌÁöÀÇ Å©±â°¡ Picture Boxº¸´Ù Å¬ °æ¿ì
-                PicNormal.SizeMode = PictureBoxSizeMode.StretchImage;   // ÀÌ¹ÌÁöÀÇ Å©±â¸¦ Á¶ÀıÇÔ
-            else                                                    // ÀÌ¹ÌÁöÀÇ Å©±â°¡ Picture¹Ú½ºÀÇ Å©±âº¸´Ù Å©Áö ¾ÊÀ» °æ¿ì
-                PicNormal.SizeMode = PictureBoxSizeMode.Normal;     // ÀÌ¹ÌÁö¸¦ ÁÂÃø»ó´Ü¿¡ À§Ä¡ÇÔ
+            if (PicNormal.SizeMode == PictureBoxSizeMode.Normal)    // ë¶ˆëŸ¬ì˜¨ ì´ë¯¸ì§€ì˜ í¬ê¸°ê°€ Picture Boxë³´ë‹¤ í´ ê²½ìš°
+                PicNormal.SizeMode = PictureBoxSizeMode.StretchImage;   // ì´ë¯¸ì§€ì˜ í¬ê¸°ë¥¼ ì¡°ì ˆí•¨
+            else                                                    // ì´ë¯¸ì§€ì˜ í¬ê¸°ê°€ Pictureë°•ìŠ¤ì˜ í¬ê¸°ë³´ë‹¤ í¬ì§€ ì•Šì„ ê²½ìš°
+                PicNormal.SizeMode = PictureBoxSizeMode.Normal;     // ì´ë¯¸ì§€ë¥¼ ì¢Œì¸¡ìƒë‹¨ì— ìœ„ì¹˜í•¨
         }
 
-        // ÅØ½ºÆ® ÆÄÀÏ ·Îµå ÀÌº¥Æ® ÇÚµé·¯
+        // í…ìŠ¤íŠ¸ íŒŒì¼ ë¡œë“œ ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬
         private void BtnFileLoad_Click(object sender, EventArgs e)
         {
-            // OpenFielDialog ÄÁÆ®·ÑÀ» µğÀÚÀÎ¿¡¼­ ±¸¼ºÇÏÁö ¾Ê°í »ı¼ºÇÏ´Â ¹æ¹ı
-            // ÅØ½ºÆ® ÆÄÀÏ ·Îµå ´ëÈ­»óÀÚ ¿­±â
+            // OpenFielDialog ì»¨íŠ¸ë¡¤ì„ ë””ìì¸ì—ì„œ êµ¬ì„±í•˜ì§€ ì•Šê³  ìƒì„±í•˜ëŠ” ë°©ë²•
+            // í…ìŠ¤íŠ¸ íŒŒì¼ ë¡œë“œ ëŒ€í™”ìƒì ì—´ê¸°
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Multiselect = false; // 2°³ ÀÌ»óÀÇ ÆÄÀÏ ¼±ÅÃÀ» ±İÁö, ±âº»ÀûÀ¸·Î DialogÀÇ Multiselect´Â falseÀÌ´Ù.
+            dialog.Multiselect = false; // 2ê°œ ì´ìƒì˜ íŒŒì¼ ì„ íƒì„ ê¸ˆì§€, ê¸°ë³¸ì ìœ¼ë¡œ Dialogì˜ MultiselectëŠ” falseì´ë‹¤.
             dialog.Filter = "Text Files(*.txt; *.cs; *.py)|*.txt; *.cs; *.py";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                // UTF-8¿¡¼­ ÇÑ±ÛÀÌ ±úÁü. EUC-KR(Window 949), UTF-8(BOM) Àº ÇÑ±ÛÀÌ ¹®Á¦ ¾øÀ½
-                // ¼±ÅÃÇÑ ÆÄÀÏ¿¡¼­ RichTextBox¿¡ ³»¿ë ·Îµå
+                // UTF-8ì—ì„œ í•œê¸€ì´ ê¹¨ì§. EUC-KR(Window 949), UTF-8(BOM) ì€ í•œê¸€ì´ ë¬¸ì œ ì—†ìŒ
+                // ì„ íƒí•œ íŒŒì¼ì—ì„œ RichTextBoxì— ë‚´ìš© ë¡œë“œ
                 RtxEditor.LoadFile(dialog.FileName, RichTextBoxStreamType.PlainText);
             }
         }
 
-        // ÅØ½ºÆ® ÆÄÀÏ ÀúÀå ¹öÆ° Å¬¸¯ ½Ã ¹ß»ıÇÏ´Â ÀÌº¥Æ® ÇÚµé·¯
+        // í…ìŠ¤íŠ¸ íŒŒì¼ ì €ì¥ ë²„íŠ¼ í´ë¦­ ì‹œ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬
         private void BtnFileSave_Click(object sender, EventArgs e)
         {
-            // ÅØ½ºÆ® ÆÄÀÏ ÀúÀå ´ëÈ­»óÀÚ ¿­±â
+            // í…ìŠ¤íŠ¸ íŒŒì¼ ì €ì¥ ëŒ€í™”ìƒì ì—´ê¸°
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.Filter = "RichText Files(*.rtf)|*.rtf";
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
-                // RichTextBox ³»¿ëÀ» ¼±ÅÃÇÑ ÆÄÀÏ·Î ÀúÀå
+                // RichTextBox ë‚´ìš©ì„ ì„ íƒí•œ íŒŒì¼ë¡œ ì €ì¥
                 RtxEditor.SaveFile(dialog.FileName, RichTextBoxStreamType.RichNoOleObjs);
             }
         }
@@ -209,21 +209,21 @@ namespace ex18_winControlApp
             var currValue = 0;
             PrgProcess.Minimum = 0;
             PrgProcess.Maximum = maxValue;
-            PrgProcess.Value = 0;   // ÇÁ·Î±×·¹½º ¹Ù ¼öÄ¡¸¦ 0À¸·Î ÃÊ±âÈ­
+            PrgProcess.Value = 0;   // í”„ë¡œê·¸ë ˆìŠ¤ ë°” ìˆ˜ì¹˜ë¥¼ 0ìœ¼ë¡œ ì´ˆê¸°í™”
 
-            BtnThread.Enabled = false;      // ½º·¹µå ¹öÆ°ÀÇ »ç¿ëÀ» Â÷´Ü
-            BtnNoThread.Enabled = false;    // ³ë½º·¹µå ¹öÆ°ÀÇ »ç¿ëÀ» Â÷´Ü
-            BtnStop.Enabled = true;         // ½ºÅ¾¹öÆ°À» »ç¿ë °¡´ÉÇÏ°Ô ÇÔ(±âº»°ªÀº false)
-            // ¹İº¹½ÃÀÛ
+            BtnThread.Enabled = false;      // ìŠ¤ë ˆë“œ ë²„íŠ¼ì˜ ì‚¬ìš©ì„ ì°¨ë‹¨
+            BtnNoThread.Enabled = false;    // ë…¸ìŠ¤ë ˆë“œ ë²„íŠ¼ì˜ ì‚¬ìš©ì„ ì°¨ë‹¨
+            BtnStop.Enabled = true;         // ìŠ¤íƒ‘ë²„íŠ¼ì„ ì‚¬ìš© ê°€ëŠ¥í•˜ê²Œ í•¨(ê¸°ë³¸ê°’ì€ false)
+            // ë°˜ë³µì‹œì‘
             for (var i = 0; i <= maxValue; i++)
             {
-                // ³»ºÎÀûÀ¸·Î º¹ÀâÇÏ°í ½Ã°£ÀÌ ¸¹ÀÌ ¿äÇÏ´Â ÀÛ¾÷
+                // ë‚´ë¶€ì ìœ¼ë¡œ ë³µì¡í•˜ê³  ì‹œê°„ì´ ë§ì´ ìš”í•˜ëŠ” ì‘ì—…
                 currValue = i;
-                TxtLog.AppendText($"ÇöÀçÁøÇà : {currValue}\r\n"); // À©µµ¿ì´Â \r\n, ¸®´ª½º, Mac \n, ¸ÅÅ²Åä½Ã \r
+                TxtLog.AppendText($"í˜„ì¬ì§„í–‰ : {currValue}\r\n"); // ìœˆë„ìš°ëŠ” \r\n, ë¦¬ëˆ…ìŠ¤, Mac \n, ë§¤í‚¨í† ì‹œ \r
                 PrgProcess.Value = currValue;
-                Thread.Sleep(500);  // 1000ms = 1ÃÊ, 500ms = 0.5ÃÊ 
+                Thread.Sleep(500);  // 1000ms = 1ì´ˆ, 500ms = 0.5ì´ˆ 
             }
-            // ÀÛ¾÷ÀÌ ¿Ï·áµÈ ÀÌÈÄ
+            // ì‘ì—…ì´ ì™„ë£Œëœ ì´í›„
             BtnThread.Enabled = true;
             BtnNoThread.Enabled = true;
             BtnStop.Enabled = false;
@@ -234,69 +234,69 @@ namespace ex18_winControlApp
             var maxValue = 100;
             PrgProcess.Minimum = 0;
             PrgProcess.Maximum = maxValue;
-            PrgProcess.Value = 0;   // ÇÁ·Î±×·¹½º ¹Ù ¼öÄ¡¸¦ 0À¸·Î ÃÊ±âÈ­
+            PrgProcess.Value = 0;   // í”„ë¡œê·¸ë ˆìŠ¤ ë°” ìˆ˜ì¹˜ë¥¼ 0ìœ¼ë¡œ ì´ˆê¸°í™”
 
             BtnThread.Enabled = BtnNoThread.Enabled = false;
             BtnStop.Enabled = true;
 
 
-            BgwProgress.WorkerReportsProgress = true;       // ÁøÇà »çÇ× ¸®Æ÷Æ® È°¼ºÈ­
-            BgwProgress.WorkerSupportsCancellation = true;  // ¹é±×¶ó¿îµå¿öÄ¿ Ãë¼Ò È°¼ºÈ­
-            BgwProgress.RunWorkerAsync(null);   // ¹é±×¶ó¿îµå ¿öÄ¿ ½ÇÇà
+            BgwProgress.WorkerReportsProgress = true;       // ì§„í–‰ ì‚¬í•­ ë¦¬í¬íŠ¸ í™œì„±í™”
+            BgwProgress.WorkerSupportsCancellation = true;  // ë°±ê·¸ë¼ìš´ë“œì›Œì»¤ ì·¨ì†Œ í™œì„±í™”
+            BgwProgress.RunWorkerAsync(null);   // ë°±ê·¸ë¼ìš´ë“œ ì›Œì»¤ ì‹¤í–‰
         }
 
         private void BtnStop_Click(object sender, EventArgs e)
         {
-            BgwProgress.CancelAsync();  // ºñµ¿±â·Î Ãë¼Ò ½ÇÇà!
+            BgwProgress.CancelAsync();  // ë¹„ë™ê¸°ë¡œ ì·¨ì†Œ ì‹¤í–‰!
         }
 
-        #region '¹é±×¶ó¿îµå¿öÄ¿ ÀÌº¥Æ® ÇÚµé·¯'
+        #region 'ë°±ê·¸ë¼ìš´ë“œì›Œì»¤ ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬'
         private void DoRealWork(BackgroundWorker worker, DoWorkEventArgs e)
         {
             var maxValue = 100;
-            double currValue = 0;   // ½Ç¼öÇüÀ¸·Î ¼³Á¤
+            double currValue = 0;   // ì‹¤ìˆ˜í˜•ìœ¼ë¡œ ì„¤ì •
             for (var i = 0; i <= maxValue; i++)
             {
-                if (worker.CancellationPending) // Áß°£¿¡ Ãë¼ÒÇÒ°ÇÁö ¹°¾îº¸´Â °Í
+                if (worker.CancellationPending) // ì¤‘ê°„ì— ì·¨ì†Œí• ê±´ì§€ ë¬¼ì–´ë³´ëŠ” ê²ƒ
                 {
                     e.Cancel = true;
                     break;
                 }
                 else {
                     currValue = i;
-                    // ¿À·£½Ã°£ÀÌ °É¸®´Â ÀÏÃ³¸®
-                    Thread.Sleep(500);  // 1000ms = 1ÃÊ, 500ms = 0.5ÃÊ 
+                    // ì˜¤ëœì‹œê°„ì´ ê±¸ë¦¬ëŠ” ì¼ì²˜ë¦¬
+                    Thread.Sleep(500);  // 1000ms = 1ì´ˆ, 500ms = 0.5ì´ˆ 
 
-                    // ¾Æ·¡¸¦ ½ÇÇàÇÏ¸é,BgwProgress_ProgressChanged ÀÌº¥Æ® ÇÚµé·¯ÀÇ
-                    // ProgressChangedEventArgs³»ÀÇ ProgressPercantage ¼Ó¼º¿¡ °ªÀÌ µé¾î°¨
+                    // ì•„ë˜ë¥¼ ì‹¤í–‰í•˜ë©´,BgwProgress_ProgressChanged ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬ì˜
+                    // ProgressChangedEventArgsë‚´ì˜ ProgressPercantage ì†ì„±ì— ê°’ì´ ë“¤ì–´ê°
                     worker.ReportProgress((int)((currValue / maxValue) * 100));
                 }
             }
         }
 
 
-        // ÀÏÀ» ÁøÇà
+        // ì¼ì„ ì§„í–‰
         private void BgwProgress_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            DoRealWork((BackgroundWorker)sender, e); // ¹Ú½ÌµÈ °´Ã¼¸¦ ¾ğ¹Ú½Ì
+            DoRealWork((BackgroundWorker)sender, e); // ë°•ì‹±ëœ ê°ì²´ë¥¼ ì–¸ë°•ì‹±
             e.Result = null;
         }
-        // ÁøÇà»óÅÂ ¹Ù²î´Â °Í Ç¥½Ã
+        // ì§„í–‰ìƒíƒœ ë°”ë€ŒëŠ” ê²ƒ í‘œì‹œ
         private void BgwProgress_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-            PrgProcess.Value = e.ProgressPercentage;    // DoRealWork¿¡¼­ Àü´Ş¹ŞÀº ³»¿ëÀ» PrgProcessÀÇ Value¿¡ Áı¾î³ÖÀ½
-            TxtLog.AppendText($"ÁøÇà·ü : {PrgProcess.Value}%\r\n");
+            PrgProcess.Value = e.ProgressPercentage;    // DoRealWorkì—ì„œ ì „ë‹¬ë°›ì€ ë‚´ìš©ì„ PrgProcessì˜ Valueì— ì§‘ì–´ë„£ìŒ
+            TxtLog.AppendText($"ì§„í–‰ë¥  : {PrgProcess.Value}%\r\n");
         }
-        // ÁøÇàÀÌ ¿Ï·áµÇ¸é ±× ÀÌÈÄÀÇ Ã³¸®
+        // ì§„í–‰ì´ ì™„ë£Œë˜ë©´ ê·¸ ì´í›„ì˜ ì²˜ë¦¬
         private void BgwProgress_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             if(e.Cancelled)
             {
-                TxtLog.AppendText("ÀÛ¾÷ÀÌ Ãë¼ÒµÇ¾ú½À´Ï´Ù.\r\n");
+                TxtLog.AppendText("ì‘ì—…ì´ ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.\r\n");
             }
             else
             {
-                TxtLog.AppendText("ÀÛ¾÷ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.\r\n");
+                TxtLog.AppendText("ì‘ì—…ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.\r\n");
             }
             BtnNoThread.Enabled = BtnThread.Enabled = true;
             BtnStop.Enabled = false;

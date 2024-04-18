@@ -376,6 +376,7 @@
 		- *Dialog : Dlg-
 		- RichTextBox : Rtx-
 		- BackgroundWorker : Bgw-
+		- ContextMenuStrip : Cms
 
 	- 이벤트를 잘못 만들었을 경우 해당 이벤트를 드래그하고 DELETE 누르고 Enter
 	- alt를 누른상태로 크기를 조절하면 grab을 무시할 수 있음
@@ -400,14 +401,44 @@
 
 		![비동기앱](https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs004.png)
 
-## 6일차
-- 예제 프로젝트
-	- 윈도우 탐색기 앱
+## 6일차(24.04.18)
+- 토이 프로젝트
+	- 윈도우 탐색기 앱(컨트롤 학습)
+		- MyExplorer 프로젝트 생성
+		- 아이콘검색, PNG 2 ico 구글링 웹사이트
+		- 트리뷰, 리스트뷰 기능 추가
+		![중간결과](https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs005.png)
+
+		- 미적용 - 컨텍스트 메뉴 보기 기능, 더블클릭 프로그램 실행, ...
+
+## 7일차
+- 토이 프로젝트
+	- 윈도우 탐색기 앱 종료
+	- ModernUI 앱(UI 디자인)
 	- 도서관리 앱 with SQL Server
-	- ModernUI 앱
 	- 국가교통정보센터 CCTV 뷰 앱
 	- IoT Dummy 앱 with SQL Server
 
 - WPF
 
-## 개인포트폴리오
+## 개인 토이프로젝트
+- 일정 관리 프로그램
+	- Development period : 240418 ~
+	- language : C#
+
+	- 기능
+		- 일정 추가
+		- 일정 수정
+		- 일정 삭제
+		- 완료한 일정 체크
+		- 미완료 업무 확인
+	
+	- 특징
+		- 일정 속성
+			- 해야 할 일
+			- 날짜
+			- 시간
+			- 장소
+			- 상세내용
+
+	-
