@@ -416,7 +416,7 @@
 	- 윈도우 탐색기 앱 종료
 
 
-
+	https://github.com/YooWangGwon/basic-csharp-2024/assets/158007390/aa5bd212-de9b-4be0-b64c-7ac21de17edf
 
 	
 	- 도서관리 앱 with SQL Server(Base) ModernUI 앱(NuGet 패키지)
@@ -427,7 +427,6 @@
 	- 도서관리 앱 종료
 	- IoT Dummy 앱 with SQL Server(IoT, DB)
 	- 국가교통정보센터 CCTV 뷰 앱(Open API, NuGet dll, Network, UI디자인, 비동기메서드)
-
 - WPF
 
 ## 개인 토이프로젝트
