@@ -415,16 +415,21 @@
    		- 컨텍스트 메뉴 보기 기능
 		- 더블 클릭 프로그램 실행 기능 추가
 	- 실행 결과
-        
-         
-
 
 	https://github.com/YooWangGwon/basic-csharp-2024/assets/158007390/aa5bd212-de9b-4be0-b64c-7ac21de17edf
 
 
-
-	- 도서관리 앱 with SQL Server(Base) ModernUI 앱(NuGet 패키지)
-
+	- 도서관리 앱 with SQL Server(Base) ModernUI(MetroUI) 앱(NuGet 패키지)
+		- Nullable
+		```cs
+		// 값형식 변수에 null 값을 넣을 수 있도록 만들어준 기능 Nullable. 변수명 뒤에 ?만 추가할 것!
+		int? a = null;
+		MessageBox.Show(a.sting())
+		```
+		- IsMdiContainer = True
+		- MenuStrip에서 언더바 하고 싶을 때 &를 붙여주면 됨. -> '메뉴(&M)'
+		- MetroModernUI 활용 -> NuGet 패키지 관리자 콘솔 Install-Package MetroModernUI
+		- 로그인 패스워드 암호화 미구현
 
 ## 8일차
 - 토이 프로젝트

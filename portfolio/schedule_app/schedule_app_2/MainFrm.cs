@@ -9,8 +9,6 @@ namespace schedule_app
         public MainFrm()
         {
             InitializeComponent();
-            CboStartHour.SelectedIndex = CboStartMin.SelectedIndex = CboEndHour.SelectedIndex = CboEndMin.SelectedIndex = 0;
-            
         }
         #region '메서드 영역'
         #endregion
@@ -25,14 +23,24 @@ namespace schedule_app
         {
             string startTime = CboStartHour.Text + CboStartMin.Text;
             string endTime = CboEndHour.Text + CboEndMin.Text;
-            TodoInfo todo = new TodoInfo(TxtTodo.Text, Dtp.Text, startTime, endTime, TxtPlace.Text, TxtTodo.Text);
-            MessageBox.Show(todo.ToString());
+            if (ChbPrivate.Checked)
+            {
+                TodoInfo todo = new TodoInfo(TxtTodo.Text, Dtp.Text, startTime, endTime, TxtPlace.Text, TxtTodo.Text, "Private");
+            }
+            else if (ChbPublic.Checked) 
+            {
+                TodoInfo todo = new TodoInfo(TxtTodo.Text, Dtp.Text, startTime, endTime, TxtPlace.Text, TxtTodo.Text, "Public");
+            }
 
             MessageBox.Show($"{TxtTodo.Text}, {Dtp.Text}, {startTime}, {endTime}, {TxtPlace.Text}, {TxtDetail.Text}");
-
-            //TodoInfo newTodo = new TodoInfo(TxtTodo.Text, Dtp.Text, startTime, endTime, TxtPlace.Text, TxtDetail.Text);
-
             BtnNew.Enabled = BtnCorrection.Enabled = BtnDelete.Enabled = BtnShowUndo.Enabled = true;
+        }
+        private void MainFrm_Load(object sender, EventArgs e)
+        {
+            
+            CboStartHour.SelectedIndex = CboStartMin.SelectedIndex = CboEndHour.SelectedIndex = CboEndMin.SelectedIndex = 0;
+            BtnConfirm.Enabled = BtnCancel.Enabled = false;
+            
         }
 
         #endregion
@@ -40,7 +48,7 @@ namespace schedule_app
     }
     public class TodoInfo
     {
-        public TodoInfo(string todo, string date, string endTime, string startTime, string place, string detail)
+        public TodoInfo(string todo, string date, string endTime, string startTime, string place, string detail, string classification)
         {
             Todo = todo;
             Date = date;
@@ -48,13 +56,15 @@ namespace schedule_app
             StartTime = startTime;
             Place = place;
             Detail = detail;
+            Classification = classification;
         }
 
         public string Todo { get; set; }
         public string Date { get; set; }
-        public string? EndTime { get; set; }
-        public string? StartTime { get; set; }
+        public string EndTime { get; set; }
+        public string StartTime { get; set; }
         public string? Place { get; set; }
         public string? Detail { get; set; }
+        public string Classification { get; set;}
     }
 }
