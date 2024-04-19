@@ -128,5 +128,50 @@ namespace MyExplorer
                 CmsFiles.Show(LsvFile, e.Location);
             }
         }
+
+        private void TsmLargeIcon_Click(object sender, EventArgs e)
+        {
+            LsvFile.View = View.LargeIcon;
+        }
+
+        private void TsmSmallIcon_Click(object sender, EventArgs e)
+        {
+            LsvFile.View = View.SmallIcon;
+        }
+
+        private void TsmList_Click(object sender, EventArgs e)
+        {
+            LsvFile.View = View.List;
+        }
+
+        private void TsmDetail_Click(object sender, EventArgs e)
+        {
+            LsvFile.View = View.Details;
+        }
+
+        private void TsmTile_Click(object sender, EventArgs e)
+        {
+            LsvFile.View = View.Tile;
+        }
+
+        private void LsvFile_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                var extension = LsvFile.SelectedItems[0].Text.Split(".")[1];
+                if (extension == "exe")
+                {   // 확장자명이 exe인 경우
+                    // MessageBox.Show(LsvFile.SelectedItems[0].ToString());    // 디버깅용
+                    // 실행파일 경로는 TxtPath
+                    var fullPath = TxtPath.Text + "\\" + LsvFile.SelectedItems[0].Text;
+                    Process.Start(fullPath);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -45,11 +45,11 @@ namespace MyExplorer
             ImgLargeIcon = new ImageList(components);
             CmsFiles = new ContextMenuStrip(components);
             qToolStripMenuItem = new ToolStripMenuItem();
-            큰아이콘ToolStripMenuItem = new ToolStripMenuItem();
-            작은아이콘ToolStripMenuItem = new ToolStripMenuItem();
-            목ToolStripMenuItem = new ToolStripMenuItem();
-            자세히ToolStripMenuItem = new ToolStripMenuItem();
-            타일ToolStripMenuItem = new ToolStripMenuItem();
+            TsmLargeIcon = new ToolStripMenuItem();
+            TsmSmallIcon = new ToolStripMenuItem();
+            TsmList = new ToolStripMenuItem();
+            TsmDetails = new ToolStripMenuItem();
+            TsmTile = new ToolStripMenuItem();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -155,6 +155,7 @@ namespace MyExplorer
             LsvFile.TabIndex = 0;
             LsvFile.UseCompatibleStateImageBehavior = false;
             LsvFile.View = View.Details;
+            LsvFile.DoubleClick += LsvFile_DoubleClick;
             LsvFile.MouseDown += LsvFile_MouseDown;
             // 
             // ClhTitle
@@ -198,40 +199,45 @@ namespace MyExplorer
             // 
             // qToolStripMenuItem
             // 
-            qToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 큰아이콘ToolStripMenuItem, 작은아이콘ToolStripMenuItem, 목ToolStripMenuItem, 자세히ToolStripMenuItem, 타일ToolStripMenuItem });
+            qToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { TsmLargeIcon, TsmSmallIcon, TsmList, TsmDetails, TsmTile });
             qToolStripMenuItem.Name = "qToolStripMenuItem";
-            qToolStripMenuItem.Size = new Size(98, 22);
+            qToolStripMenuItem.Size = new Size(180, 22);
             qToolStripMenuItem.Text = "보기";
             // 
-            // 큰아이콘ToolStripMenuItem
+            // TsmLargeIcon
             // 
-            큰아이콘ToolStripMenuItem.Name = "큰아이콘ToolStripMenuItem";
-            큰아이콘ToolStripMenuItem.Size = new Size(138, 22);
-            큰아이콘ToolStripMenuItem.Text = "큰 아이콘";
+            TsmLargeIcon.Name = "TsmLargeIcon";
+            TsmLargeIcon.Size = new Size(180, 22);
+            TsmLargeIcon.Text = "큰 아이콘";
+            TsmLargeIcon.Click += TsmLargeIcon_Click;
             // 
-            // 작은아이콘ToolStripMenuItem
+            // TsmSmallIcon
             // 
-            작은아이콘ToolStripMenuItem.Name = "작은아이콘ToolStripMenuItem";
-            작은아이콘ToolStripMenuItem.Size = new Size(138, 22);
-            작은아이콘ToolStripMenuItem.Text = "작은 아이콘";
+            TsmSmallIcon.Name = "TsmSmallIcon";
+            TsmSmallIcon.Size = new Size(180, 22);
+            TsmSmallIcon.Text = "작은 아이콘";
+            TsmSmallIcon.Click += TsmSmallIcon_Click;
             // 
-            // 목ToolStripMenuItem
+            // TsmList
             // 
-            목ToolStripMenuItem.Name = "목ToolStripMenuItem";
-            목ToolStripMenuItem.Size = new Size(138, 22);
-            목ToolStripMenuItem.Text = "목록";
+            TsmList.Name = "TsmList";
+            TsmList.Size = new Size(180, 22);
+            TsmList.Text = "목록";
+            TsmList.Click += TsmList_Click;
             // 
-            // 자세히ToolStripMenuItem
+            // TsmDetails
             // 
-            자세히ToolStripMenuItem.Name = "자세히ToolStripMenuItem";
-            자세히ToolStripMenuItem.Size = new Size(138, 22);
-            자세히ToolStripMenuItem.Text = "자세히";
+            TsmDetails.Name = "TsmDetails";
+            TsmDetails.Size = new Size(180, 22);
+            TsmDetails.Text = "자세히";
+            TsmDetails.Click += TsmDetail_Click;
             // 
-            // 타일ToolStripMenuItem
+            // TsmTile
             // 
-            타일ToolStripMenuItem.Name = "타일ToolStripMenuItem";
-            타일ToolStripMenuItem.Size = new Size(138, 22);
-            타일ToolStripMenuItem.Text = "타일";
+            TsmTile.Name = "TsmTile";
+            TsmTile.Size = new Size(180, 22);
+            TsmTile.Text = "타일";
+            TsmTile.Click += TsmTile_Click;
             // 
             // FrmMain
             // 
@@ -272,10 +278,13 @@ namespace MyExplorer
         private ImageList ImgLargeIcon;
         private ContextMenuStrip CmsFiles;
         private ToolStripMenuItem qToolStripMenuItem;
-        private ToolStripMenuItem 큰아이콘ToolStripMenuItem;
-        private ToolStripMenuItem 작은아이콘ToolStripMenuItem;
         private ToolStripMenuItem 목ToolStripMenuItem;
         private ToolStripMenuItem 자세히ToolStripMenuItem;
         private ToolStripMenuItem 타일ToolStripMenuItem;
+        private ToolStripMenuItem TsmLargeIcon;
+        private ToolStripMenuItem TsmSmallIcon;
+        private ToolStripMenuItem TsmList;
+        private ToolStripMenuItem TsmDetails;
+        private ToolStripMenuItem TsmTile;
     }
 }
