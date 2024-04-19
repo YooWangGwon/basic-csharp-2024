@@ -409,16 +409,19 @@
 		- 트리뷰, 리스트뷰 기능 추가
 		![중간결과](https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs005.png)
 
-		- 미적용 - 컨텍스트 메뉴 보기 기능, 더블클릭 프로그램 실행, ...
-
 ## 7일차
 - 토이 프로젝트
 	- 윈도우 탐색기 앱 종료
+   		- 컨텍스트 메뉴 보기 기능
+		- 더블 클릭 프로그램 실행 기능 추가
+    		- 실행 결과
+         
 
 
 	https://github.com/YooWangGwon/basic-csharp-2024/assets/158007390/aa5bd212-de9b-4be0-b64c-7ac21de17edf
 
-	
+
+
 	- 도서관리 앱 with SQL Server(Base) ModernUI 앱(NuGet 패키지)
 
 
