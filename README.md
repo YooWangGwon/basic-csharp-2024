@@ -409,7 +409,7 @@
 		- 트리뷰, 리스트뷰 기능 추가
 		![중간결과](https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs005.png)
 
-## 7일차
+## 7일차(24.04.19)
 - 토이 프로젝트
 	- 윈도우 탐색기 앱 종료
    		- 컨텍스트 메뉴 보기 기능
@@ -431,9 +431,22 @@
 		- MetroModernUI 활용 -> NuGet 패키지 관리자 콘솔 Install-Package MetroModernUI
 		- 로그인 패스워드 암호화 미구현
 
-## 8일차
+## 8일차(24.04.22)
 - 토이 프로젝트
 	- 도서관리 앱 종료
+		- 앱 사용자 관리 완료
+			- 사용자 정보 등록, 수정, 삭제
+			- 사용자 패스워드 암호화(MD5)
+
+## 9일차
+- 토이 프로젝트
+	- 도서관리 앱 종료
+		- 책 장르 관리
+		- 책 정보 관리
+		- 도서회원 관리
+		- 대출관리
+		- 프로그램 소개
+
 	- IoT Dummy 앱 with SQL Server(IoT, DB)
 	- 국가교통정보센터 CCTV 뷰 앱(Open API, NuGet dll, Network, UI디자인, 비동기메서드)
 - WPF
