@@ -35,13 +35,13 @@
             this.관리MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuLoginUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.MnuGenre = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuBookGenre = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuBookinfo = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuMembers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.MnuBookRental = new System.Windows.Forms.ToolStripMenuItem();
             this.도움말HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.이프로그램은AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
@@ -80,7 +80,7 @@
             this.관리MToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnuLoginUsers,
             this.toolStripSeparator1,
-            this.MnuGenre,
+            this.MnuBookGenre,
             this.MnuBookinfo,
             this.MnuMembers,
             this.toolStripSeparator2,
@@ -102,11 +102,11 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
-            // MnuGenre
+            // MnuBookGenre
             // 
-            this.MnuGenre.Name = "MnuGenre";
-            this.MnuGenre.Size = new System.Drawing.Size(180, 22);
-            this.MnuGenre.Text = "책장르 관리";
+            this.MnuBookGenre.Name = "MnuBookGenre";
+            this.MnuBookGenre.Size = new System.Drawing.Size(180, 22);
+            this.MnuBookGenre.Text = "책장르 관리";
             // 
             // MnuBookinfo
             // 
@@ -134,16 +134,16 @@
             // 도움말HToolStripMenuItem
             // 
             this.도움말HToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.이프로그램은AToolStripMenuItem});
+            this.MnuAbout});
             this.도움말HToolStripMenuItem.Name = "도움말HToolStripMenuItem";
             this.도움말HToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.도움말HToolStripMenuItem.Text = "도움말(&H)";
             // 
-            // 이프로그램은AToolStripMenuItem
+            // MnuAbout
             // 
-            this.이프로그램은AToolStripMenuItem.Name = "이프로그램은AToolStripMenuItem";
-            this.이프로그램은AToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.이프로그램은AToolStripMenuItem.Text = "이 프로그램은...(&A)";
+            this.MnuAbout.Name = "MnuAbout";
+            this.MnuAbout.Size = new System.Drawing.Size(180, 22);
+            this.MnuAbout.Text = "이 프로그램은...(&A)";
             // 
             // statusStrip1
             // 
@@ -197,12 +197,12 @@
         private System.Windows.Forms.ToolStripMenuItem MnuExit;
         private System.Windows.Forms.ToolStripMenuItem MnuLoginUsers;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem MnuGenre;
+        private System.Windows.Forms.ToolStripMenuItem MnuBookGenre;
         private System.Windows.Forms.ToolStripMenuItem MnuBookinfo;
         private System.Windows.Forms.ToolStripMenuItem MnuMembers;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem MnuBookRental;
-        private System.Windows.Forms.ToolStripMenuItem 이프로그램은AToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MnuAbout;
     }
 }
 
