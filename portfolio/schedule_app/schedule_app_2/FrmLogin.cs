@@ -1,22 +1,29 @@
-﻿using System;
+﻿using schedule_app;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using MetroFramework.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace NewBookRentalShopApp
+namespace schedule_app_2
 {
-    public partial class FrmLogin : MetroForm
+    public partial class FrmLogin : Form
     {
+        MainFrm frm = null;
+
         private bool isLogin = false;
         public bool IsLogin
         {
             get { return isLogin; }
             set { isLogin = value; }
         }
-
-
         public FrmLogin()
         {
             InitializeComponent();
@@ -24,12 +31,15 @@ namespace NewBookRentalShopApp
             TxtUserId.Text = string.Empty;
             TxtPassword.Text = string.Empty;
         }
-
-        // 로그인 버튼 클릭 이벤트 핸들러
-        private void BtnCancel_Click(object sender, EventArgs e)
+        public FrmLogin(MainFrm mainFrm)
         {
-            // Application.Exit(); // 종료시 종료를 물어보는 다이얼로그가 나타남
-            Environment.Exit(0);    // 무조건 종료
+            InitializeComponent();
+            frm = mainFrm;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -47,7 +57,7 @@ namespace NewBookRentalShopApp
                 isFail = true;
                 errMsg += "패스워드를 입력하세요.\n";
             }
-            if(isFail == true)
+            if (isFail == true)
             {
                 MessageBox.Show(errMsg, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -55,8 +65,6 @@ namespace NewBookRentalShopApp
             IsLogin = LoginProcess();
             if (IsLogin) this.Close();
         }
-
-
         private bool LoginProcess()
         {
             var md5Hash = MD5.Create();
@@ -65,19 +73,7 @@ namespace NewBookRentalShopApp
             string password = TxtPassword.Text;
             string chkUserId = string.Empty;    // DB에서 넘어온 값
             string chkPassword = string.Empty;
-            /*
-             * 1. Connection 생성
-             * 2. 쿼리 문자열 작성
-             * 3. SqlCommand 명령 객체 생성
-             * 4. SqlParameter 객체 생성
-             * 5. Select SqlDataReader 또는 SqlDataSet 객체 사용
-             * 6. CUD 작업 SqlCommand.ExecuteQuery()
-             * 7. Connection 닫기
-             */
-
-            // 연결문자열(ConnectionString)
-            // Data Source=localhost;Initial Catalog=BookRentalShop2024;Persist Security Info=True;User ID=sa;Encrypt=False;Password=mssql_p@ss
-            // @userID, @password 쿼리문 외부에서 변수값을 안전하게 주입함
+            
             using (SqlConnection conn = new SqlConnection(Helper.Common.Connstring))
             {
                 conn.Open();
@@ -85,12 +81,12 @@ namespace NewBookRentalShopApp
                 string query = @"SELECT userID
 	                                  , [password]
                                    FROM usertbl
-                                  WHERE userid = @userId
+                                  WHERE userId = @userId
                                     AND [password] = @password";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 // @userid, @password 파라미터 할당
                 SqlParameter paramUserId = new SqlParameter("@userId", userId);
-                SqlParameter paramPassword = new SqlParameter("@password", Helper.Common.GetMd5Hash(md5Hash, password));
+                SqlParameter paramPassword = new SqlParameter("@password", password);
                 cmd.Parameters.Add(paramUserId);
                 cmd.Parameters.Add(paramPassword);
 
@@ -104,19 +100,11 @@ namespace NewBookRentalShopApp
                 }
                 else
                 {
-                    MessageBox.Show("로그인 정보가 없습니다","DB 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("로그인 정보가 없습니다", "DB 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
             }   // using을 사용하면 conn.Close()가 필요없음
-        }
-
-        private void TxtPassword_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13) // Keychar : 키보드의 입력값에 대한 속성, Keychar 13은 엔터키
-            {
-                BtnLogin_Click(sender, e);
-            }
         }
     }
 }

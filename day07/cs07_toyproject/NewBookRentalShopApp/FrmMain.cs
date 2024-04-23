@@ -15,6 +15,9 @@ namespace NewBookRentalShopApp
     {
         // 각 화면을 초기화
         FrmLoginUser frmLoginUser = null;   // mdi에서 자식 객체를 new로 만들면 문제가 생길 수 있음, 객체를 메서드로 생성
+        FrmBookDivision frmBookDivision = null;
+        FrmBookInfo frmBookInfo = null;
+
         public FrmMain()
         {
             InitializeComponent();
@@ -37,6 +40,16 @@ namespace NewBookRentalShopApp
             frmLoginUser = ShowActiveForm(frmLoginUser, typeof(FrmLoginUser)) as FrmLoginUser;
         }
 
+        // 책 장르 관리 메뉴 클릭 이벤트 헨들러
+        private void MnuBookGenre_Click(object sender, EventArgs e)
+        {
+            // 객체 변수                       객체 변수                클래스               클래스
+            frmBookDivision = ShowActiveForm(frmBookDivision, typeof(FrmBookDivision)) as FrmBookDivision;
+        }
+        private void MnuBookinfo_Click(object sender, EventArgs e)
+        {
+            frmBookInfo = ShowActiveForm(frmBookInfo, typeof(FrmBookInfo)) as FrmBookInfo;
+        }
         Form ShowActiveForm(Form form, Type type)
         {
             if (form == null)    // 창이 한번 닫혔으면
@@ -62,5 +75,6 @@ namespace NewBookRentalShopApp
             }
             return form;
         }
+
     }
 }

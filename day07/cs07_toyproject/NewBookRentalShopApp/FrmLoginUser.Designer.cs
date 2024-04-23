@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLoginUser));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.DgvResult = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BtnDel = new MetroFramework.Controls.MetroButton();
             this.BtnSave = new MetroFramework.Controls.MetroButton();
@@ -39,13 +41,12 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.DgvResult = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvResult)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -64,6 +65,17 @@
             this.splitContainer1.Size = new System.Drawing.Size(728, 322);
             this.splitContainer1.SplitterDistance = 337;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // DgvResult
+            // 
+            this.DgvResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgvResult.Location = new System.Drawing.Point(0, 0);
+            this.DgvResult.Name = "DgvResult";
+            this.DgvResult.RowTemplate.Height = 23;
+            this.DgvResult.Size = new System.Drawing.Size(337, 322);
+            this.DgvResult.TabIndex = 0;
+            this.DgvResult.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvResult_CellClick);
             // 
             // groupBox1
             // 
@@ -239,23 +251,13 @@
             this.metroLabel1.Text = "사용자 순번";
             this.metroLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // DgvResult
-            // 
-            this.DgvResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgvResult.Location = new System.Drawing.Point(0, 0);
-            this.DgvResult.Name = "DgvResult";
-            this.DgvResult.RowTemplate.Height = 23;
-            this.DgvResult.Size = new System.Drawing.Size(337, 322);
-            this.DgvResult.TabIndex = 0;
-            this.DgvResult.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvResult_CellClick);
-            // 
             // FrmLoginUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 402);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLoginUser";
             this.Text = "로그인 사용자";
             this.Load += new System.EventHandler(this.FrmLoginUser_Load);
@@ -263,9 +265,9 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvResult)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvResult)).EndInit();
             this.ResumeLayout(false);
 
         }
