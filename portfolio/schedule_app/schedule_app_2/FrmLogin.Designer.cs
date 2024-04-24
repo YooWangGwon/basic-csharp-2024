@@ -65,7 +65,7 @@
             TxtPassword.PasswordChar = '●';
             TxtPassword.Size = new Size(130, 21);
             TxtPassword.TabIndex = 2;
-            TxtPassword.Text = "1234";
+            TxtPassword.KeyPress += TxtPassword_KeyPress;
             // 
             // label1
             // 
@@ -114,6 +114,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(479, 243);
+            ControlBox = false;
             Controls.Add(BtnCancel);
             Controls.Add(BtnLogin);
             Controls.Add(label2);
@@ -121,11 +122,12 @@
             Controls.Add(TxtPassword);
             Controls.Add(TxtUserId);
             Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmLogin";
-            Text = "FrmLogin";
+            Text = "로그인";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

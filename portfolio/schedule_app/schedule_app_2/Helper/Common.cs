@@ -10,7 +10,7 @@ namespace schedule_app_2.Helper
     public class Common
     {
         // 정적(static)으로 만드는 공통 문자 연결 -> 프로그램 시작부터 끝까지 할당되어 사용할 수 있음
-        public static string Connstring = "Data Source=localhost;" +
+        public static readonly string Connstring = "Data Source=localhost;" +
                                    "Initial Catalog=TodoManagement;" +
                                    "Persist Security Info=True;" +
                                    "User ID=sa;Encrypt=False;Password=mssql_p@ss";

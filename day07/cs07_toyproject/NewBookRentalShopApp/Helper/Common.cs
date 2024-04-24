@@ -6,10 +6,19 @@ namespace NewBookRentalShopApp.Helper   // NewBookRentalShopApp 프로젝트 안
     public class Common
     {
         // 정적(static)으로 만드는 공통 문자 연결 -> 프로그램 시작부터 끝까지 할당되어 사용할 수 있음
-        public static string Connstring = "Data Source=localhost;" +
+        public static readonly string Connstring = "Data Source=localhost;" +
                                    "Initial Catalog=BookRentalShop2024;" +
                                    "Persist Security Info=True;" +
                                    "User ID=sa;Encrypt=False;Password=mssql_p@ss";
+        // 로그인 아이디
+        public static string LoginId { get; set; }
+
+        // 회원 선택 팝업에서 대출 화면으로 넘길 데이터들을 정적변수로 만들기
+        public static string SelMemberIdx { get; set; }
+        public static string SelMemberName { get; set; }
+        public static string SelBookIdx { get; set; }
+        public static string SelBookName {  get; set; }
+
 
         // MD5 해시 알고리즘 암호화
         // 1234

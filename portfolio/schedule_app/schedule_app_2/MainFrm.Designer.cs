@@ -29,12 +29,11 @@ namespace schedule_app
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
-            ClbTodo = new CheckedListBox();
-            FrmMain = new MonthCalendar();
+            McrDate = new MonthCalendar();
             BtnDelete = new Button();
             BtnCorrection = new Button();
             BtnNew = new Button();
-            panel1 = new Panel();
+            DgvTodo = new DataGridView();
             ChbPublic = new CheckBox();
             ChbPrivate = new CheckBox();
             BtnCancel = new Button();
@@ -50,57 +49,53 @@ namespace schedule_app
             label3 = new Label();
             label10 = new Label();
             label5 = new Label();
-            menuStrip1 = new MenuStrip();
-            파일ToolStripMenuItem = new ToolStripMenuItem();
-            사용자정보관리ToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator1 = new ToolStripSeparator();
-            미완료업무확인ToolStripMenuItem = new ToolStripMenuItem();
-            도움말ToolStripMenuItem = new ToolStripMenuItem();
-            panel1.SuspendLayout();
-            menuStrip1.SuspendLayout();
+            splitContainer1 = new SplitContainer();
+            BtnComplete = new Button();
+            statusStrip1 = new StatusStrip();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            LblUserName = new ToolStripStatusLabel();
+            ((System.ComponentModel.ISupportInitialize)DgvTodo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // ClbTodo
+            // McrDate
             // 
-            ClbTodo.CheckOnClick = true;
-            ClbTodo.FormattingEnabled = true;
-            ClbTodo.Location = new Point(14, 183);
-            ClbTodo.Name = "ClbTodo";
-            ClbTodo.Size = new Size(220, 184);
-            ClbTodo.TabIndex = 2;
-            // 
-            // FrmMain
-            // 
-            FrmMain.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            FrmMain.Location = new Point(14, 9);
-            FrmMain.Name = "FrmMain";
-            FrmMain.TabIndex = 3;
-            FrmMain.DateSelected += FrmMain_DateSelected;
+            McrDate.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            McrDate.Location = new Point(39, 24);
+            McrDate.Name = "McrDate";
+            McrDate.ShowTodayCircle = false;
+            McrDate.TabIndex = 3;
             // 
             // BtnDelete
             // 
             BtnDelete.Font = new Font("나눔바른고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            BtnDelete.Location = new Point(484, 296);
+            BtnDelete.Location = new Point(243, 311);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(70, 30);
             BtnDelete.TabIndex = 7;
             BtnDelete.Text = "삭제";
             BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // BtnCorrection
             // 
             BtnCorrection.Font = new Font("나눔바른고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            BtnCorrection.Location = new Point(411, 296);
+            BtnCorrection.Location = new Point(167, 311);
             BtnCorrection.Name = "BtnCorrection";
             BtnCorrection.Size = new Size(70, 30);
             BtnCorrection.TabIndex = 8;
             BtnCorrection.Text = "수정";
             BtnCorrection.UseVisualStyleBackColor = true;
+            BtnCorrection.Click += BtnCorrection_Click;
             // 
             // BtnNew
             // 
             BtnNew.Font = new Font("나눔바른고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            BtnNew.Location = new Point(336, 296);
+            BtnNew.Location = new Point(91, 311);
             BtnNew.Name = "BtnNew";
             BtnNew.Size = new Size(70, 30);
             BtnNew.TabIndex = 9;
@@ -108,39 +103,23 @@ namespace schedule_app
             BtnNew.UseVisualStyleBackColor = true;
             BtnNew.Click += BtnNew_Click;
             // 
-            // panel1
+            // DgvTodo
             // 
-            panel1.Controls.Add(ChbPublic);
-            panel1.Controls.Add(ChbPrivate);
-            panel1.Controls.Add(BtnCancel);
-            panel1.Controls.Add(BtnConfirm);
-            panel1.Controls.Add(FrmMain);
-            panel1.Controls.Add(ClbTodo);
-            panel1.Controls.Add(TxtTodo);
-            panel1.Controls.Add(BtnDelete);
-            panel1.Controls.Add(BtnCorrection);
-            panel1.Controls.Add(TxtPlace);
-            panel1.Controls.Add(BtnNew);
-            panel1.Controls.Add(TxtDetail);
-            panel1.Controls.Add(DtpEnd);
-            panel1.Controls.Add(DtpStart);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label10);
-            panel1.Controls.Add(label5);
-            panel1.Location = new Point(12, 27);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(568, 381);
-            panel1.TabIndex = 10;
+            DgvTodo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvTodo.Location = new Point(8, 198);
+            DgvTodo.MultiSelect = false;
+            DgvTodo.Name = "DgvTodo";
+            DgvTodo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgvTodo.Size = new Size(283, 179);
+            DgvTodo.TabIndex = 32;
+            DgvTodo.CellClick += DgvTodo_CellClick;
             // 
             // ChbPublic
             // 
             ChbPublic.AutoSize = true;
             ChbPublic.CheckAlign = ContentAlignment.MiddleRight;
             ChbPublic.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
-            ChbPublic.Location = new Point(433, 271);
+            ChbPublic.Location = new Point(192, 286);
             ChbPublic.Name = "ChbPublic";
             ChbPublic.Size = new Size(78, 19);
             ChbPublic.TabIndex = 31;
@@ -153,7 +132,7 @@ namespace schedule_app
             ChbPrivate.AutoSize = true;
             ChbPrivate.CheckAlign = ContentAlignment.MiddleRight;
             ChbPrivate.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
-            ChbPrivate.Location = new Point(323, 271);
+            ChbPrivate.Location = new Point(82, 286);
             ChbPrivate.Name = "ChbPrivate";
             ChbPrivate.Size = new Size(78, 19);
             ChbPrivate.TabIndex = 31;
@@ -163,7 +142,7 @@ namespace schedule_app
             // 
             // BtnCancel
             // 
-            BtnCancel.Location = new Point(484, 332);
+            BtnCancel.Location = new Point(243, 347);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(70, 30);
             BtnCancel.TabIndex = 30;
@@ -173,7 +152,7 @@ namespace schedule_app
             // 
             // BtnConfirm
             // 
-            BtnConfirm.Location = new Point(411, 332);
+            BtnConfirm.Location = new Point(167, 347);
             BtnConfirm.Name = "BtnConfirm";
             BtnConfirm.Size = new Size(70, 30);
             BtnConfirm.TabIndex = 29;
@@ -183,21 +162,21 @@ namespace schedule_app
             // 
             // TxtTodo
             // 
-            TxtTodo.Location = new Point(317, 9);
+            TxtTodo.Location = new Point(76, 24);
             TxtTodo.Name = "TxtTodo";
             TxtTodo.Size = new Size(237, 23);
             TxtTodo.TabIndex = 10;
             // 
             // TxtPlace
             // 
-            TxtPlace.Location = new Point(317, 101);
+            TxtPlace.Location = new Point(76, 116);
             TxtPlace.Name = "TxtPlace";
             TxtPlace.Size = new Size(237, 23);
             TxtPlace.TabIndex = 15;
             // 
             // TxtDetail
             // 
-            TxtDetail.Location = new Point(317, 134);
+            TxtDetail.Location = new Point(76, 149);
             TxtDetail.Multiline = true;
             TxtDetail.Name = "TxtDetail";
             TxtDetail.Size = new Size(237, 125);
@@ -205,14 +184,14 @@ namespace schedule_app
             // 
             // DtpEnd
             // 
-            DtpEnd.Location = new Point(317, 72);
+            DtpEnd.Location = new Point(76, 87);
             DtpEnd.Name = "DtpEnd";
             DtpEnd.Size = new Size(237, 23);
             DtpEnd.TabIndex = 28;
             // 
             // DtpStart
             // 
-            DtpStart.Location = new Point(317, 40);
+            DtpStart.Location = new Point(76, 55);
             DtpStart.Name = "DtpStart";
             DtpStart.Size = new Size(237, 23);
             DtpStart.TabIndex = 28;
@@ -221,7 +200,7 @@ namespace schedule_app
             // 
             label1.AutoSize = true;
             label1.Font = new Font("나눔바른고딕", 11F, FontStyle.Bold);
-            label1.Location = new Point(242, 11);
+            label1.Location = new Point(1, 26);
             label1.Name = "label1";
             label1.Size = new Size(66, 17);
             label1.TabIndex = 24;
@@ -231,7 +210,7 @@ namespace schedule_app
             // 
             label2.AutoSize = true;
             label2.Font = new Font("나눔바른고딕", 11F, FontStyle.Bold);
-            label2.Location = new Point(245, 42);
+            label2.Location = new Point(4, 57);
             label2.Name = "label2";
             label2.Size = new Size(63, 17);
             label2.TabIndex = 23;
@@ -242,7 +221,7 @@ namespace schedule_app
             // 
             label4.AutoSize = true;
             label4.Font = new Font("나눔바른고딕", 11F, FontStyle.Bold);
-            label4.Location = new Point(274, 103);
+            label4.Location = new Point(33, 118);
             label4.Name = "label4";
             label4.Size = new Size(34, 17);
             label4.TabIndex = 18;
@@ -253,7 +232,7 @@ namespace schedule_app
             // 
             label3.AutoSize = true;
             label3.Font = new Font("나눔바른고딕", 11F, FontStyle.Bold);
-            label3.Location = new Point(245, 74);
+            label3.Location = new Point(4, 89);
             label3.Name = "label3";
             label3.Size = new Size(63, 17);
             label3.TabIndex = 22;
@@ -264,7 +243,7 @@ namespace schedule_app
             // 
             label10.AutoSize = true;
             label10.Font = new Font("나눔바른고딕", 11F, FontStyle.Bold);
-            label10.Location = new Point(245, 271);
+            label10.Location = new Point(4, 286);
             label10.Name = "label10";
             label10.Size = new Size(63, 17);
             label10.TabIndex = 17;
@@ -275,80 +254,109 @@ namespace schedule_app
             // 
             label5.AutoSize = true;
             label5.Font = new Font("나눔바른고딕", 11F, FontStyle.Bold);
-            label5.Location = new Point(245, 136);
+            label5.Location = new Point(4, 151);
             label5.Name = "label5";
             label5.Size = new Size(63, 17);
             label5.TabIndex = 17;
             label5.Text = "상세 내용";
             label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // menuStrip1
+            // splitContainer1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { 파일ToolStripMenuItem, 도움말ToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(592, 24);
-            menuStrip1.TabIndex = 11;
-            menuStrip1.Text = "menuStrip1";
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Name = "splitContainer1";
             // 
-            // 파일ToolStripMenuItem
+            // splitContainer1.Panel1
             // 
-            파일ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 사용자정보관리ToolStripMenuItem, toolStripSeparator1, 미완료업무확인ToolStripMenuItem });
-            파일ToolStripMenuItem.Name = "파일ToolStripMenuItem";
-            파일ToolStripMenuItem.Size = new Size(43, 20);
-            파일ToolStripMenuItem.Text = "관리";
+            splitContainer1.Panel1.Controls.Add(DgvTodo);
+            splitContainer1.Panel1.Controls.Add(McrDate);
             // 
-            // 사용자정보관리ToolStripMenuItem
+            // splitContainer1.Panel2
             // 
-            사용자정보관리ToolStripMenuItem.Name = "사용자정보관리ToolStripMenuItem";
-            사용자정보관리ToolStripMenuItem.Size = new Size(166, 22);
-            사용자정보관리ToolStripMenuItem.Text = "사용자 정보 관리";
+            splitContainer1.Panel2.Controls.Add(ChbPublic);
+            splitContainer1.Panel2.Controls.Add(TxtDetail);
+            splitContainer1.Panel2.Controls.Add(DtpEnd);
+            splitContainer1.Panel2.Controls.Add(ChbPrivate);
+            splitContainer1.Panel2.Controls.Add(DtpStart);
+            splitContainer1.Panel2.Controls.Add(label1);
+            splitContainer1.Panel2.Controls.Add(BtnCancel);
+            splitContainer1.Panel2.Controls.Add(BtnNew);
+            splitContainer1.Panel2.Controls.Add(label2);
+            splitContainer1.Panel2.Controls.Add(BtnConfirm);
+            splitContainer1.Panel2.Controls.Add(TxtPlace);
+            splitContainer1.Panel2.Controls.Add(label5);
+            splitContainer1.Panel2.Controls.Add(label4);
+            splitContainer1.Panel2.Controls.Add(TxtTodo);
+            splitContainer1.Panel2.Controls.Add(BtnCorrection);
+            splitContainer1.Panel2.Controls.Add(label10);
+            splitContainer1.Panel2.Controls.Add(label3);
+            splitContainer1.Panel2.Controls.Add(BtnComplete);
+            splitContainer1.Panel2.Controls.Add(BtnDelete);
+            splitContainer1.Size = new Size(626, 405);
+            splitContainer1.SplitterDistance = 297;
+            splitContainer1.TabIndex = 12;
             // 
-            // toolStripSeparator1
+            // BtnComplete
             // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(163, 6);
+            BtnComplete.Font = new Font("나눔바른고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            BtnComplete.Location = new Point(90, 348);
+            BtnComplete.Name = "BtnComplete";
+            BtnComplete.Size = new Size(70, 30);
+            BtnComplete.TabIndex = 7;
+            BtnComplete.Text = "완료";
+            BtnComplete.UseVisualStyleBackColor = true;
+            BtnComplete.Click += BtnComplete_Click;
             // 
-            // 미완료업무확인ToolStripMenuItem
+            // statusStrip1
             // 
-            미완료업무확인ToolStripMenuItem.Name = "미완료업무확인ToolStripMenuItem";
-            미완료업무확인ToolStripMenuItem.Size = new Size(166, 22);
-            미완료업무확인ToolStripMenuItem.Text = "미완료 업무 확인";
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, LblUserName });
+            statusStrip1.Location = new Point(0, 383);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(626, 22);
+            statusStrip1.TabIndex = 13;
+            statusStrip1.Text = "statusStrip1";
             // 
-            // 도움말ToolStripMenuItem
+            // toolStripStatusLabel1
             // 
-            도움말ToolStripMenuItem.Name = "도움말ToolStripMenuItem";
-            도움말ToolStripMenuItem.Size = new Size(55, 20);
-            도움말ToolStripMenuItem.Text = "도움말";
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(54, 17);
+            toolStripStatusLabel1.Text = "사용자 : ";
+            // 
+            // LblUserName
+            // 
+            LblUserName.Name = "LblUserName";
+            LblUserName.Size = new Size(0, 17);
             // 
             // MainFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(592, 420);
-            Controls.Add(panel1);
-            Controls.Add(menuStrip1);
+            ClientSize = new Size(626, 405);
+            Controls.Add(statusStrip1);
+            Controls.Add(splitContainer1);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MainMenuStrip = menuStrip1;
             Name = "MainFrm";
             Text = "일정 관리 프로그램";
+            FormClosing += MainFrm_FormClosing;
             Load += MainFrm_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DgvTodo).EndInit();
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private CheckedListBox ClbTodo;
-        private MonthCalendar FrmMain;
+        private MonthCalendar McrDate;
         public Button BtnDelete;
         public Button BtnNew;
         public Button BtnCorrection;
-        private Panel panel1;
         private TextBox TxtTodo;
         private TextBox TxtPlace;
         private TextBox TxtDetail;
@@ -364,11 +372,11 @@ namespace schedule_app
         private CheckBox ChbPrivate;
         private Label label10;
         private DateTimePicker DtpEnd;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem 파일ToolStripMenuItem;
-        private ToolStripMenuItem 도움말ToolStripMenuItem;
-        private ToolStripMenuItem 미완료업무확인ToolStripMenuItem;
-        private ToolStripMenuItem 사용자정보관리ToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator1;
+        private DataGridView DgvTodo;
+        private SplitContainer splitContainer1;
+        public Button BtnComplete;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripStatusLabel LblUserName;
     }
 }

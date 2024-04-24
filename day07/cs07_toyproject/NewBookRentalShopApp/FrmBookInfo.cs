@@ -227,7 +227,13 @@ namespace NewBookRentalShopApp
             NudPrice.Value = 0;
             RefreshData(); // 데이터 그리드 재조회
         }
-
+        private void TxtIsbn_KeyPress(object sender, KeyPressEventArgs e) // ISBN에 숫자만 입력되도록 처리
+        {   // 숫자 이외에는 전부 막아버림
+            if (char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
         // 데이터 그리드 뷰에 데이터를 새로 부르기
         private void RefreshData()
@@ -292,5 +298,6 @@ namespace NewBookRentalShopApp
                 isNew = false; // UPDATE
             }
         }
+
     }
 }

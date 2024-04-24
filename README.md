@@ -447,13 +447,18 @@
 		- 공통 클래스 만들기
 		- 책 정보 관리 
 
-## 10일차
+## 10일차(24.04.24)
 
-- 토이 프로젝트
-	- 도서회원 관리
-	- 대출관리
-	- 프로그램 소개
+- 토이 프로젝트 종료
+	도서관리 앱
+		- 도서회원 관리
+		- 대출관리
+		- 프로그램 소개
 
+	![도서관리 앱](https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs007.png)
+
+## 추후 학습
+- 토이프로젝트
 	- IoT Dummy 앱 with SQL Server(IoT, DB)
 	- 국가교통정보센터 CCTV 뷰 앱(Open API, NuGet dll, Network, UI디자인, 비동기메서드)
 - WPF
@@ -462,20 +467,35 @@
 - 일정 관리 프로그램
 	- Development period : 240418 ~
 	- language : C#
+	- DevTools :  Visual Studio 2022, MSSQL
 
 	- 기능
-		- 일정 추가
-		- 일정 수정
-		- 일정 삭제
-		- 완료한 일정 체크
-		- 미완료 업무 확인
+		- DB 연동(todotbl, usertbl)
+		- 로그인
+		- 오늘 일자에 해당하는 일정 출력
+		- 일정 추가(신규 버튼, BtnNew)
+		- 일정 수정(수정 버튼, BtnCorrection)
+		- 일정 삭제(삭제 버튼, BtnDelelte)
+		- 일정 완료 체크(완료 버튼, BtnComplete)
+
 	
 	- 특징
 		- 일정 속성
-			- 해야 할 일
-			- 날짜
-			- 시간
-			- 장소
-			- 상세내용
+			- 일정 번호(INT)
+			- 내용(VARCHAR(50))
+			- 시작일(DATE)
+			- 마감일(DATE)
+			- 장소(VARCHAR(50))
+			- 상세내용(VARCHAR(500))
+			- 구분(개인업무/공유업무)(VARVHAR(10))
+			- 완료 여부(CHAR(3))
 
-	-
+		- 일정 출력
+			- 오늘 날짜를 기준으로 일정 마감일이 지났거나 일정 시작일이 지나지 않은 경우, 출력되지 않음
+			- 좌측 하단 DataGridView에서는 내용/구분/완료 여부만 출력
+			- 우측 TxtBox, DateTimePicker, CheckBox에 내용, 시작일, 마감일, 장소, 상세내용, 구분을 표시
+
+	- 추가 예정
+		- 패스워드 암호화
+		- 이용자 관리(추가/삭제)
+		- 프로그램 소개

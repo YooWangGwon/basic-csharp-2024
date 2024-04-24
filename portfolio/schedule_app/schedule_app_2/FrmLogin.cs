@@ -63,7 +63,10 @@ namespace schedule_app_2
                 return;
             }
             IsLogin = LoginProcess();
-            if (IsLogin) this.Close();
+            if (IsLogin)
+            { 
+                this.Close();
+            }
         }
         private bool LoginProcess()
         {
@@ -73,12 +76,14 @@ namespace schedule_app_2
             string password = TxtPassword.Text;
             string chkUserId = string.Empty;    // DB에서 넘어온 값
             string chkPassword = string.Empty;
-            
+
             using (SqlConnection conn = new SqlConnection(Helper.Common.Connstring))
             {
                 conn.Open();
 
-                string query = @"SELECT userID
+                string query = @"SELECT userIdx
+                                      , name
+                                      , userID
 	                                  , [password]
                                    FROM usertbl
                                   WHERE userId = @userId
@@ -95,7 +100,8 @@ namespace schedule_app_2
                 {
                     chkUserId = reader["userId"] != null ? reader["userId"].ToString() : "-"; // 유저 아이디가 null 일때 -로 변경
                     chkPassword = reader["password"] != null ? reader["password"].ToString() : "-"; // 패스워드가 null 이면 -로 변경
-
+                    frm.UserIdx = (int)reader["userIdx"];
+                    frm.UserName = reader["name"].ToString();
                     return true;
                 }
                 else
@@ -105,6 +111,14 @@ namespace schedule_app_2
                 }
 
             }   // using을 사용하면 conn.Close()가 필요없음
+        }
+
+        private void TxtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13) // Keychar : 키보드의 입력값에 대한 속성, Keychar 13은 엔터키
+            {
+                BtnLogin_Click(sender, e);
+            }
         }
     }
 }
