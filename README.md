@@ -464,7 +464,7 @@
 - WPF
 
 ## 개인 토이프로젝트
-- 일정 관리 프로그램
+- 조직 일정 관리 프로그램
 	- Development period : 240418 ~
 	- language : C#
 	- DevTools :  Visual Studio 2022, MSSQL
@@ -487,13 +487,24 @@
 			- 마감일(DATE)
 			- 장소(VARCHAR(50))
 			- 상세내용(VARCHAR(500))
-			- 구분(개인업무/공유업무)(VARVHAR(10))
+			- 구분(개인일정/공유일정)(VARVHAR(10))
 			- 완료 여부(CHAR(3))
 
 		- 일정 출력
 			- 오늘 날짜를 기준으로 일정 마감일이 지났거나 일정 시작일이 지나지 않은 경우, 출력되지 않음
+			- 로그인 한 이용자의 회원번호를 이용하여 해당 회원만의 (Private) 일정과 회원구분없는 공유(Public) 일정을 출력 
 			- 좌측 하단 DataGridView에서는 내용/구분/완료 여부만 출력
 			- 우측 TxtBox, DateTimePicker, CheckBox에 내용, 시작일, 마감일, 장소, 상세내용, 구분을 표시
+
+	- 로그인 화면 
+
+	![로그인](https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs008.png)
+
+
+	- 메인 화면
+
+	![메인화면](https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs009.png)
+
 
 	- 추가 예정
 		- 패스워드 암호화

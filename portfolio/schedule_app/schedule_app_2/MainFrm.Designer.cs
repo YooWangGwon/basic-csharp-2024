@@ -76,7 +76,7 @@ namespace schedule_app
             BtnDelete.Location = new Point(243, 311);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(70, 30);
-            BtnDelete.TabIndex = 7;
+            BtnDelete.TabIndex = 10;
             BtnDelete.Text = "삭제";
             BtnDelete.UseVisualStyleBackColor = true;
             BtnDelete.Click += BtnDelete_Click;
@@ -87,7 +87,7 @@ namespace schedule_app
             BtnCorrection.Location = new Point(167, 311);
             BtnCorrection.Name = "BtnCorrection";
             BtnCorrection.Size = new Size(70, 30);
-            BtnCorrection.TabIndex = 8;
+            BtnCorrection.TabIndex = 9;
             BtnCorrection.Text = "수정";
             BtnCorrection.UseVisualStyleBackColor = true;
             BtnCorrection.Click += BtnCorrection_Click;
@@ -98,7 +98,7 @@ namespace schedule_app
             BtnNew.Location = new Point(91, 311);
             BtnNew.Name = "BtnNew";
             BtnNew.Size = new Size(70, 30);
-            BtnNew.TabIndex = 9;
+            BtnNew.TabIndex = 8;
             BtnNew.Text = "신규";
             BtnNew.UseVisualStyleBackColor = true;
             BtnNew.Click += BtnNew_Click;
@@ -122,7 +122,7 @@ namespace schedule_app
             ChbPublic.Location = new Point(192, 286);
             ChbPublic.Name = "ChbPublic";
             ChbPublic.Size = new Size(78, 19);
-            ChbPublic.TabIndex = 31;
+            ChbPublic.TabIndex = 7;
             ChbPublic.Text = "공통 업무";
             ChbPublic.UseVisualStyleBackColor = true;
             ChbPublic.Click += ChbPublic_Click;
@@ -135,7 +135,7 @@ namespace schedule_app
             ChbPrivate.Location = new Point(82, 286);
             ChbPrivate.Name = "ChbPrivate";
             ChbPrivate.Size = new Size(78, 19);
-            ChbPrivate.TabIndex = 31;
+            ChbPrivate.TabIndex = 6;
             ChbPrivate.Text = "개인 업무";
             ChbPrivate.UseVisualStyleBackColor = true;
             ChbPrivate.Click += ChbPrivate_Click;
@@ -145,7 +145,7 @@ namespace schedule_app
             BtnCancel.Location = new Point(243, 347);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(70, 30);
-            BtnCancel.TabIndex = 30;
+            BtnCancel.TabIndex = 13;
             BtnCancel.Text = "취소";
             BtnCancel.UseVisualStyleBackColor = true;
             BtnCancel.Click += BtnCancel_Click;
@@ -155,7 +155,7 @@ namespace schedule_app
             BtnConfirm.Location = new Point(167, 347);
             BtnConfirm.Name = "BtnConfirm";
             BtnConfirm.Size = new Size(70, 30);
-            BtnConfirm.TabIndex = 29;
+            BtnConfirm.TabIndex = 12;
             BtnConfirm.Text = "등록";
             BtnConfirm.UseVisualStyleBackColor = true;
             BtnConfirm.Click += BtnConfirm_Click;
@@ -165,14 +165,14 @@ namespace schedule_app
             TxtTodo.Location = new Point(76, 24);
             TxtTodo.Name = "TxtTodo";
             TxtTodo.Size = new Size(237, 23);
-            TxtTodo.TabIndex = 10;
+            TxtTodo.TabIndex = 1;
             // 
             // TxtPlace
             // 
             TxtPlace.Location = new Point(76, 116);
             TxtPlace.Name = "TxtPlace";
             TxtPlace.Size = new Size(237, 23);
-            TxtPlace.TabIndex = 15;
+            TxtPlace.TabIndex = 4;
             // 
             // TxtDetail
             // 
@@ -180,21 +180,21 @@ namespace schedule_app
             TxtDetail.Multiline = true;
             TxtDetail.Name = "TxtDetail";
             TxtDetail.Size = new Size(237, 125);
-            TxtDetail.TabIndex = 16;
+            TxtDetail.TabIndex = 5;
             // 
             // DtpEnd
             // 
             DtpEnd.Location = new Point(76, 87);
             DtpEnd.Name = "DtpEnd";
             DtpEnd.Size = new Size(237, 23);
-            DtpEnd.TabIndex = 28;
+            DtpEnd.TabIndex = 3;
             // 
             // DtpStart
             // 
             DtpStart.Location = new Point(76, 55);
             DtpStart.Name = "DtpStart";
             DtpStart.Size = new Size(237, 23);
-            DtpStart.TabIndex = 28;
+            DtpStart.TabIndex = 2;
             // 
             // label1
             // 
@@ -303,7 +303,7 @@ namespace schedule_app
             BtnComplete.Location = new Point(90, 348);
             BtnComplete.Name = "BtnComplete";
             BtnComplete.Size = new Size(70, 30);
-            BtnComplete.TabIndex = 7;
+            BtnComplete.TabIndex = 11;
             BtnComplete.Text = "완료";
             BtnComplete.UseVisualStyleBackColor = true;
             BtnComplete.Click += BtnComplete_Click;
@@ -314,6 +314,7 @@ namespace schedule_app
             statusStrip1.Location = new Point(0, 383);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(626, 22);
+            statusStrip1.SizingGrip = false;
             statusStrip1.TabIndex = 13;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -335,7 +336,9 @@ namespace schedule_app
             ClientSize = new Size(626, 405);
             Controls.Add(statusStrip1);
             Controls.Add(splitContainer1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimizeBox = false;
             Name = "MainFrm";
             Text = "일정 관리 프로그램";
             FormClosing += MainFrm_FormClosing;

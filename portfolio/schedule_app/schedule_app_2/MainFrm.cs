@@ -10,7 +10,6 @@ namespace schedule_app
     public partial class MainFrm : Form
     {
         private bool isNew = false;
-        private string complete;
         private int todoIdx = -1;
         
         public int UserIdx { get; set; }
@@ -39,6 +38,7 @@ namespace schedule_app
             isNew = true;
             TxtTodo.Text = TxtPlace.Text = TxtDetail.Text = string.Empty;
             Initializer2();
+            TxtTodo.Focus();
         }
 
         // 수정 버튼 클릭
@@ -46,6 +46,7 @@ namespace schedule_app
         {
             isNew = false;
             Initializer2();
+            TxtTodo.Focus();
         }
 
         // 삭제 버튼 클릭
@@ -99,8 +100,16 @@ namespace schedule_app
 
                 var query = "";
                 var division = "";
+                if (TxtTodo.Text == string.Empty)
+                {
+                    MessageBox.Show("일정 내용이 비어있습니다.\n일정 내용을 입력해주세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                
+                if (TxtTodo.Text == string.Empty)
+
                 if (ChbPrivate.Checked) division = "Private";
-                else if (ChbPublic.Checked) division = "Private";
+                else if (ChbPublic.Checked) division = "Public";
                 else
                 {
                     MessageBox.Show("업무 구분을 체크해주세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -249,10 +258,12 @@ namespace schedule_app
             RefreshData();
             Initializer1();
         }
+
         #endregion
 
 
         #region '메서드 영역'
+
         private void Initializer1() // 초기화용 메서드
         {
             DtpEnd.Enabled = DtpStart.Enabled = false;
