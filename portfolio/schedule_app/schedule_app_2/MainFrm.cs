@@ -108,15 +108,13 @@ namespace schedule_app
                     return;
                 }
 
-                if (TxtTodo.Text == string.Empty)
-
-                    if (ChbPrivate.Checked) division = "Private";
-                    else if (ChbPublic.Checked) division = "Public";
-                    else
-                    {
-                        MessageBox.Show("업무 구분을 체크해주세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                if (ChbPrivate.Checked) division = "Private";
+                else if (ChbPublic.Checked) division = "Public";
+                else
+                {
+                    MessageBox.Show("업무 구분을 체크해주세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 if (isNew) // INSERT 이면
                 {
@@ -190,6 +188,7 @@ namespace schedule_app
             }
             RefreshData();
             Initializer1();
+            isNew = false;
         }
 
         // DgvTodo 행 클릭 이벤트 핸들러

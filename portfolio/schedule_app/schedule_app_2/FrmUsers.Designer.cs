@@ -37,8 +37,8 @@
             TxtNames = new TextBox();
             label3 = new Label();
             label4 = new Label();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            TxtId = new TextBox();
+            TxtPassword = new TextBox();
             BtnCancel = new Button();
             label5 = new Label();
             splitContainer1 = new SplitContainer();
@@ -58,16 +58,17 @@
             BtnSave.Location = new Point(101, 250);
             BtnSave.Name = "BtnSave";
             BtnSave.Size = new Size(71, 30);
-            BtnSave.TabIndex = 2;
+            BtnSave.TabIndex = 8;
             BtnSave.Text = "등록";
             BtnSave.UseVisualStyleBackColor = true;
+            BtnSave.Click += BtnSave_Click;
             // 
             // BtnNew
             // 
             BtnNew.Location = new Point(24, 214);
             BtnNew.Name = "BtnNew";
             BtnNew.Size = new Size(71, 30);
-            BtnNew.TabIndex = 2;
+            BtnNew.TabIndex = 5;
             BtnNew.Text = "신규";
             BtnNew.UseVisualStyleBackColor = true;
             BtnNew.Click += BtnNew_Click;
@@ -99,14 +100,14 @@
             TxtUserIdx.Name = "TxtUserIdx";
             TxtUserIdx.ReadOnly = true;
             TxtUserIdx.Size = new Size(148, 23);
-            TxtUserIdx.TabIndex = 4;
+            TxtUserIdx.TabIndex = 0;
             // 
             // TxtNames
             // 
             TxtNames.Location = new Point(101, 90);
             TxtNames.Name = "TxtNames";
             TxtNames.Size = new Size(148, 23);
-            TxtNames.TabIndex = 4;
+            TxtNames.TabIndex = 1;
             // 
             // label3
             // 
@@ -128,26 +129,26 @@
             label4.TabIndex = 3;
             label4.Text = "패스워드";
             // 
-            // textBox3
+            // TxtId
             // 
-            textBox3.Location = new Point(101, 148);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(148, 23);
-            textBox3.TabIndex = 4;
+            TxtId.Location = new Point(101, 148);
+            TxtId.Name = "TxtId";
+            TxtId.Size = new Size(148, 23);
+            TxtId.TabIndex = 3;
             // 
-            // textBox4
+            // TxtPassword
             // 
-            textBox4.Location = new Point(101, 179);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(148, 23);
-            textBox4.TabIndex = 4;
+            TxtPassword.Location = new Point(101, 179);
+            TxtPassword.Name = "TxtPassword";
+            TxtPassword.Size = new Size(148, 23);
+            TxtPassword.TabIndex = 4;
             // 
             // BtnCancel
             // 
             BtnCancel.Location = new Point(178, 250);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(71, 30);
-            BtnCancel.TabIndex = 2;
+            BtnCancel.TabIndex = 9;
             BtnCancel.Text = "취소";
             BtnCancel.UseVisualStyleBackColor = true;
             // 
@@ -174,11 +175,11 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(CboDepartment);
-            splitContainer1.Panel2.Controls.Add(textBox4);
+            splitContainer1.Panel2.Controls.Add(TxtPassword);
             splitContainer1.Panel2.Controls.Add(BtnDelete);
             splitContainer1.Panel2.Controls.Add(BtnUpdate);
             splitContainer1.Panel2.Controls.Add(BtnSave);
-            splitContainer1.Panel2.Controls.Add(textBox3);
+            splitContainer1.Panel2.Controls.Add(TxtId);
             splitContainer1.Panel2.Controls.Add(BtnCancel);
             splitContainer1.Panel2.Controls.Add(TxtNames);
             splitContainer1.Panel2.Controls.Add(BtnNew);
@@ -201,6 +202,7 @@
             DgvUsers.Name = "DgvUsers";
             DgvUsers.Size = new Size(467, 307);
             DgvUsers.TabIndex = 0;
+            DgvUsers.CellClick += DgvUsers_CellClick;
             // 
             // CboDepartment
             // 
@@ -208,7 +210,7 @@
             CboDepartment.Location = new Point(101, 119);
             CboDepartment.Name = "CboDepartment";
             CboDepartment.Size = new Size(148, 23);
-            CboDepartment.TabIndex = 5;
+            CboDepartment.TabIndex = 2;
             CboDepartment.Text = "--부서 선택--";
             // 
             // BtnDelete
@@ -216,7 +218,7 @@
             BtnDelete.Location = new Point(178, 214);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(71, 30);
-            BtnDelete.TabIndex = 2;
+            BtnDelete.TabIndex = 7;
             BtnDelete.Text = "삭제";
             BtnDelete.UseVisualStyleBackColor = true;
             // 
@@ -225,9 +227,10 @@
             BtnUpdate.Location = new Point(101, 214);
             BtnUpdate.Name = "BtnUpdate";
             BtnUpdate.Size = new Size(71, 30);
-            BtnUpdate.TabIndex = 2;
+            BtnUpdate.TabIndex = 26;
             BtnUpdate.Text = "수정";
             BtnUpdate.UseVisualStyleBackColor = true;
+            BtnUpdate.Click += BtnUpdate_Click;
             // 
             // FrmUsers
             // 
@@ -257,8 +260,8 @@
         private TextBox TxtNames;
         private Label label3;
         private Label label4;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox TxtId;
+        private TextBox TxtPassword;
         private Button BtnCancel;
         private Label label5;
         private SplitContainer splitContainer1;

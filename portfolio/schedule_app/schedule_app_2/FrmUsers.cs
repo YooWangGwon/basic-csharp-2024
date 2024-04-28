@@ -13,6 +13,8 @@ namespace schedule_app_2
 {
     public partial class FrmUsers : Form
     {
+        private bool isNew = false;
+
         public FrmUsers()
         {
             InitializeComponent();
@@ -21,6 +23,8 @@ namespace schedule_app_2
         {
             RefreshData();
             InitInputData();
+            BtnInitializer();
+            TxtInitializer();
         }
         private void RefreshData()
         {
@@ -56,8 +60,130 @@ namespace schedule_app_2
 
         private void BtnNew_Click(object sender, EventArgs e)
         {
-            TxtNames.Text = string.Empty;
+            isNew = true;
+            TxtNames.ReadOnly = TxtId.ReadOnly = TxtPassword.ReadOnly = false;
+            BtnNew.Enabled = BtnUpdate.Enabled = BtnDelete.Enabled = false;
+            ContentInitial();
+
+            BtnSave.Enabled = BtnCancel.Enabled = true;
         }
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            TxtNames.ReadOnly = TxtId.ReadOnly = TxtPassword.ReadOnly = false;
+            BtnNew.Enabled = BtnUpdate.Enabled = BtnDelete.Enabled = false;
+            BtnSave.Enabled = BtnCancel.Enabled = true;
+        }
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            if (TxtNames.Text == string.Empty)
+            {
+                MessageBox.Show("이름이 비어있습니다.\n일정 이름을 입력해주세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (TxtId.Text == string.Empty)
+            {
+                MessageBox.Show("아이디가 비어있습니다.\n아이디를 입력해주세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (CboDepartment.SelectedIndex == -1)
+            {
+                MessageBox.Show("부서가 선택되어 있지 않습니다.\n부서를 선택해주세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (TxtPassword.Text == string.Empty)
+            {
+                MessageBox.Show("패스워드가 비어있습니다.\n패스워드를 입력해주세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+
+                using (SqlConnection conn = new SqlConnection(Helper.Common.Connstring))
+                {
+                    var query = "";
+                    conn.Open();
+
+                    if (isNew = true)
+                    {
+                        query = @"INSERT INTO [usertbl]
+                               ([name]
+                               ,[department]
+                               ,[userId]
+                               ,[password])
+                               VALUES
+                                    ( @name
+                                    , @department
+                                    , @userId
+                                    , @password)";
+                    }
+                    else
+                    {
+                        query = @"UPDATE [usertbl]
+                               SET [name] = @name
+                                  ,[department] = @department
+                                  ,[userId] = @userId
+                                  ,[password] = @password
+                             WHERE userIdx = @userIdx";
+                    }
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlParameter prmname = new SqlParameter("@name", TxtNames.Text);
+                    cmd.Parameters.Add(prmname);
+                    SqlParameter prmdepartment = new SqlParameter("@department", CboDepartment.SelectedValue);
+                    cmd.Parameters.Add(prmdepartment);
+                    SqlParameter prmId = new SqlParameter("@userId", TxtPassword.Text);
+                    cmd.Parameters.Add(prmId);
+                    SqlParameter prmPassword = new SqlParameter("@password", TxtPassword.Text);
+                    cmd.Parameters.Add(prmPassword);
+
+                    if (isNew != true)  // UPDATE일 경우
+                    {
+                        SqlParameter prmUserIdx = new SqlParameter("@userIdx", TxtUserIdx.Text);
+                        cmd.Parameters.Add(prmUserIdx);
+                    }
+
+                    var result = cmd.ExecuteNonQuery();
+
+                    if (result > 0)
+                    {
+                        MessageBox.Show(this, "저장성공!", "저장", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("저장 실패!", "저장", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            RefreshData();
+            TxtInitializer();
+            BtnInitializer();
+            ContentInitial();
+            isNew = false;
+        }
+        private void DgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)    // 아무것도 선택하지 않으면 -1
+            {
+                var selData = DgvUsers.Rows[e.RowIndex]; // 내가 선택한 행 인덱스 값
+                TxtUserIdx.Text = selData.Cells[0].Value.ToString();// 업무 번호
+                TxtNames.Text = selData.Cells[1].Value.ToString();
+                CboDepartment.SelectedValue = selData.Cells[2].Value.ToString();
+                TxtId.Text = selData.Cells[3].Value.ToString();
+                TxtPassword.Text = selData.Cells[4].Value.ToString();
+
+                BtnNew.Enabled = BtnUpdate.Enabled = BtnDelete.Enabled = true;
+            }
+            else
+            {
+                return;
+            }
+        }
+
 
         private void InitInputData()
         {
@@ -89,5 +215,23 @@ namespace schedule_app_2
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void BtnInitializer()
+        {
+            CboDepartment.SelectedIndex = -1;
+            BtnUpdate.Enabled = BtnDelete.Enabled = BtnSave.Enabled = BtnCancel.Enabled = false;
+            BtnNew.Enabled = true;
+        }
+        private void ContentInitial()
+        {
+            TxtNames.Text = TxtUserIdx.Text = TxtId.Text = TxtPassword.Text = string.Empty;
+            CboDepartment.SelectedValue = -1;
+        }
+
+        private void TxtInitializer()
+        {
+            TxtNames.ReadOnly = TxtId.ReadOnly = TxtPassword.ReadOnly = true;
+        }
+
     }
 }
