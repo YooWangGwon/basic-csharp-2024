@@ -11,7 +11,8 @@ namespace schedule_app
     {
         private bool isNew = false;
         private int todoIdx = -1;
-        
+        private DateTime selection;
+
         public int UserIdx { get; set; }
         public string UserName { get; set; }
         public MainFrm()
@@ -29,6 +30,7 @@ namespace schedule_app
             frm.TopMost = true; // 가장 윈도우화면 상단에
             frm.ShowDialog();
             LblUserName.Text = UserName;
+            TxtDate.Text = McrDate.TodayDate.ToString("yyyy년 MM월 dd일");
             RefreshData();
         }
 
@@ -105,16 +107,16 @@ namespace schedule_app
                     MessageBox.Show("일정 내용이 비어있습니다.\n일정 내용을 입력해주세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                
+
                 if (TxtTodo.Text == string.Empty)
 
-                if (ChbPrivate.Checked) division = "Private";
-                else if (ChbPublic.Checked) division = "Public";
-                else
-                {
-                    MessageBox.Show("업무 구분을 체크해주세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                    if (ChbPrivate.Checked) division = "Private";
+                    else if (ChbPublic.Checked) division = "Public";
+                    else
+                    {
+                        MessageBox.Show("업무 구분을 체크해주세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
                 if (isNew) // INSERT 이면
                 {
@@ -277,6 +279,8 @@ namespace schedule_app
         }
         private void RefreshData()
         {
+            selection = McrDate.SelectionStart;
+
             using (SqlConnection conn = new SqlConnection(schedule_app_2.Helper.Common.Connstring))
             {
                 conn.Open();
@@ -309,7 +313,7 @@ namespace schedule_app
                                  AND EndDate >= @Date
                                  AND Division = 'Public'";
                 SqlCommand cmd = new SqlCommand(query, conn);
-                SqlParameter prmDate = new SqlParameter("@Date", McrDate.TodayDate);
+                SqlParameter prmDate = new SqlParameter("@Date", selection);
                 cmd.Parameters.Add(prmDate);
                 SqlParameter prmUserIdx = new SqlParameter("@userIdx", UserIdx);
                 cmd.Parameters.Add(prmUserIdx);
@@ -361,6 +365,19 @@ namespace schedule_app
             {
                 Environment.Exit(0);
             }
+        }
+
+        private void McrDate_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            TxtDate.Text = McrDate.SelectionStart.ToString("yyyy년 MM월 dd일");
+            DateTime selection = McrDate.SelectionStart;
+            RefreshData();
+        }
+
+        private void MnuUsers_Click(object sender, EventArgs e)
+        {
+            FrmUsers frm = new FrmUsers();
+            frm.ShowDialog();
         }
     }
 }
