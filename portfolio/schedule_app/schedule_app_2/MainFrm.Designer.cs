@@ -59,6 +59,7 @@ namespace schedule_app
             menuStrip1 = new MenuStrip();
             관리ToolStripMenuItem = new ToolStripMenuItem();
             MnuUsers = new ToolStripMenuItem();
+            MnuDepartment = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)DgvTodo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -372,7 +373,7 @@ namespace schedule_app
             // 
             // 관리ToolStripMenuItem
             // 
-            관리ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MnuUsers });
+            관리ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MnuUsers, MnuDepartment });
             관리ToolStripMenuItem.Name = "관리ToolStripMenuItem";
             관리ToolStripMenuItem.Size = new Size(43, 20);
             관리ToolStripMenuItem.Text = "관리";
@@ -384,6 +385,14 @@ namespace schedule_app
             MnuUsers.Size = new Size(180, 22);
             MnuUsers.Text = "사용자 관리";
             MnuUsers.Click += MnuUsers_Click;
+            // 
+            // MnuDepartment
+            // 
+            MnuDepartment.Image = schedule_app_2.Properties.Resources.department;
+            MnuDepartment.Name = "MnuDepartment";
+            MnuDepartment.Size = new Size(180, 22);
+            MnuDepartment.Text = "부서 관리";
+            MnuDepartment.Click += MnuDepartment_Click;
             // 
             // MainFrm
             // 
@@ -447,5 +456,6 @@ namespace schedule_app
         private ToolStripMenuItem MnuUsers;
         private TextBox TxtDate;
         private Label label6;
+        private ToolStripMenuItem MnuDepartment;
     }
 }

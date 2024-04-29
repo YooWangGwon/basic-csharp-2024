@@ -71,7 +71,7 @@ namespace schedule_app_2
                     var query = "";
                     conn.Open();
 
-                    if (isNew = true)
+                    if (isNew == true)
                     {
                         query = @"INSERT INTO [usertbl]
                                ([name]

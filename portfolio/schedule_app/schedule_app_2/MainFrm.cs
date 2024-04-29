@@ -259,7 +259,31 @@ namespace schedule_app
             RefreshData();
             Initializer1();
         }
+        private void MainFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var res = MessageBox.Show("종료하시겠습니까?", "종료여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
+        }
 
+        private void McrDate_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            TxtDate.Text = McrDate.SelectionStart.ToString("yyyy년 MM월 dd일");
+            DateTime selection = McrDate.SelectionStart;
+            RefreshData();
+        }
+
+        private void MnuUsers_Click(object sender, EventArgs e)
+        {
+            FrmUsers frm = new FrmUsers();
+            frm.ShowDialog();
+        }
         #endregion
 
 
@@ -353,29 +377,10 @@ namespace schedule_app
         }
         #endregion
 
-        private void MainFrm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            var res = MessageBox.Show("종료하시겠습니까?", "종료여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (res == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-            else
-            {
-                Environment.Exit(0);
-            }
-        }
 
-        private void McrDate_DateChanged(object sender, DateRangeEventArgs e)
+        private void MnuDepartment_Click(object sender, EventArgs e)
         {
-            TxtDate.Text = McrDate.SelectionStart.ToString("yyyy년 MM월 dd일");
-            DateTime selection = McrDate.SelectionStart;
-            RefreshData();
-        }
-
-        private void MnuUsers_Click(object sender, EventArgs e)
-        {
-            FrmUsers frm = new FrmUsers();
+            FrmDepartment frm = new FrmDepartment();
             frm.ShowDialog();
         }
     }
