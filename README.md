@@ -491,22 +491,27 @@
 			- 완료 여부(CHAR(3))
 
 		- 일정 출력
-			- 오늘 날짜를 기준으로 일정 마감일이 지났거나 일정 시작일이 지나지 않은 경우, 출력되지 않음
+			- 선택한 날짜를 기준으로 일정 마감일이 지났거나 일정 시작일이 지나지 않은 경우, 출력되지 않음
+			- 로그인 성공 후 메인 화면에 들어갔을 때, 선택한 날짜의 초기값은 오늘 날짜 -> 캘린더에서 날짜를 선택할 경우, 선택한 날짜로 변경
 			- 로그인 한 이용자의 회원번호를 이용하여 해당 회원만의 (Private) 일정과 회원구분없는 공유(Public) 일정을 출력 
 			- 좌측 하단 DataGridView에서는 내용/구분/완료 여부만 출력
 			- 우측 TxtBox, DateTimePicker, CheckBox에 내용, 시작일, 마감일, 장소, 상세내용, 구분을 표시
+
+		- 사용자 관리
+			- 사용자 신규 등록, 사용자 정보 수정, 삭제 기능 추가
 
 	- 로그인 화면 
 
 	![로그인](https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs008.png)
 
-
 	- 메인 화면
 
 	![메인화면](https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs009.png)
 
+	- 사용자 관리 화면
+
+	![메인화면](https://raw.githubusercontent.com/YooWangGwon/basic-csharp-2024/main/images/cs010.png)
 
 	- 추가 예정
 		- 패스워드 암호화
-		- 이용자 관리(추가/삭제)
 		- 프로그램 소개

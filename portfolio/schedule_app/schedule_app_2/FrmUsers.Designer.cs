@@ -95,7 +95,7 @@
             // 
             // TxtUserIdx
             // 
-            TxtUserIdx.BackColor = SystemColors.ControlLightLight;
+            TxtUserIdx.BackColor = Color.White;
             TxtUserIdx.Location = new Point(101, 61);
             TxtUserIdx.Name = "TxtUserIdx";
             TxtUserIdx.ReadOnly = true;
@@ -104,6 +104,7 @@
             // 
             // TxtNames
             // 
+            TxtNames.BackColor = Color.White;
             TxtNames.Location = new Point(101, 90);
             TxtNames.Name = "TxtNames";
             TxtNames.Size = new Size(148, 23);
@@ -131,6 +132,7 @@
             // 
             // TxtId
             // 
+            TxtId.BackColor = Color.White;
             TxtId.Location = new Point(101, 148);
             TxtId.Name = "TxtId";
             TxtId.Size = new Size(148, 23);
@@ -138,6 +140,7 @@
             // 
             // TxtPassword
             // 
+            TxtPassword.BackColor = Color.White;
             TxtPassword.Location = new Point(101, 179);
             TxtPassword.Name = "TxtPassword";
             TxtPassword.Size = new Size(148, 23);
@@ -151,6 +154,7 @@
             BtnCancel.TabIndex = 9;
             BtnCancel.Text = "취소";
             BtnCancel.UseVisualStyleBackColor = true;
+            BtnCancel.Click += BtnCancel_Click;
             // 
             // label5
             // 
@@ -197,21 +201,20 @@
             // DgvUsers
             // 
             DgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvUsers.Dock = DockStyle.Fill;
-            DgvUsers.Location = new Point(0, 0);
+            DgvUsers.Location = new Point(12, 12);
             DgvUsers.Name = "DgvUsers";
-            DgvUsers.Size = new Size(467, 307);
+            DgvUsers.Size = new Size(455, 283);
             DgvUsers.TabIndex = 0;
             DgvUsers.CellClick += DgvUsers_CellClick;
             // 
             // CboDepartment
             // 
+            CboDepartment.DropDownStyle = ComboBoxStyle.DropDownList;
             CboDepartment.FormattingEnabled = true;
             CboDepartment.Location = new Point(101, 119);
             CboDepartment.Name = "CboDepartment";
             CboDepartment.Size = new Size(148, 23);
             CboDepartment.TabIndex = 2;
-            CboDepartment.Text = "--부서 선택--";
             // 
             // BtnDelete
             // 
@@ -221,6 +224,7 @@
             BtnDelete.TabIndex = 7;
             BtnDelete.Text = "삭제";
             BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // BtnUpdate
             // 
@@ -238,8 +242,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(751, 307);
             Controls.Add(splitContainer1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "FrmUsers";
+            SizeGripStyle = SizeGripStyle.Hide;
             Text = "사용자 관리";
             Load += FrmUsers_Load;
             splitContainer1.Panel1.ResumeLayout(false);

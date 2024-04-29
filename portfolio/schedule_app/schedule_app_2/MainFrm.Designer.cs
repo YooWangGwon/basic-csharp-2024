@@ -169,6 +169,7 @@ namespace schedule_app
             // 
             // TxtTodo
             // 
+            TxtTodo.BackColor = Color.White;
             TxtTodo.Location = new Point(78, 68);
             TxtTodo.Name = "TxtTodo";
             TxtTodo.Size = new Size(237, 23);
@@ -176,6 +177,7 @@ namespace schedule_app
             // 
             // TxtPlace
             // 
+            TxtPlace.BackColor = Color.White;
             TxtPlace.Location = new Point(78, 160);
             TxtPlace.Name = "TxtPlace";
             TxtPlace.Size = new Size(237, 23);
@@ -183,6 +185,7 @@ namespace schedule_app
             // 
             // TxtDetail
             // 
+            TxtDetail.BackColor = Color.White;
             TxtDetail.Location = new Point(78, 193);
             TxtDetail.Multiline = true;
             TxtDetail.Name = "TxtDetail";
@@ -308,6 +311,7 @@ namespace schedule_app
             // 
             // TxtDate
             // 
+            TxtDate.BackColor = Color.White;
             TxtDate.Location = new Point(81, 207);
             TxtDate.Name = "TxtDate";
             TxtDate.ReadOnly = true;
@@ -375,7 +379,7 @@ namespace schedule_app
             // 
             // MnuUsers
             // 
-            MnuUsers.Image = schedule_app_2.Properties.Resources.free_icon_multiple_users_silhouette_33308;
+            MnuUsers.Image = schedule_app_2.Properties.Resources.profile;
             MnuUsers.Name = "MnuUsers";
             MnuUsers.Size = new Size(180, 22);
             MnuUsers.Text = "사용자 관리";
