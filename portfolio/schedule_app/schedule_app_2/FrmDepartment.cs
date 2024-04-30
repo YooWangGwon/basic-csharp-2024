@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using schedule_app_2.Helper;
 
 namespace schedule_app_2
 {
@@ -50,7 +51,7 @@ namespace schedule_app_2
             try
             {
 
-                using (SqlConnection conn = new SqlConnection(Helper.Common.Connstring))
+                using (SqlConnection conn = new SqlConnection(Common.Connstring))
                 {
                     var query = "";
                     conn.Open();
@@ -107,7 +108,7 @@ namespace schedule_app_2
             if (e.RowIndex > -1)    // 아무것도 선택하지 않으면 -1
             {
                 var selData = DgvDepartment.Rows[e.RowIndex]; // 내가 선택한 행 인덱스 값
-                TxtDepIdx.Text = selData.Cells[0].Value.ToString();// 업무 번호
+                TxtDepIdx.Text = selData.Cells[0].Value.ToString();// 부서 번호
                 TxtNames.Text = selData.Cells[1].Value.ToString();
                 BtnNew.Enabled = BtnUpdate.Enabled = BtnDelete.Enabled = true;
             }
@@ -132,7 +133,7 @@ namespace schedule_app_2
                 var answer = MessageBox.Show(this, "정말 삭제하시겠습니까?", "삭제 여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (answer == DialogResult.No) return;
 
-                using (SqlConnection conn = new SqlConnection(Helper.Common.Connstring))
+                using (SqlConnection conn = new SqlConnection(Common.Connstring))
                 {
                     conn.Open();
                     var query = "DELETE FROM departmenttbl WHERE depIdx = @depIdx";
@@ -178,7 +179,7 @@ namespace schedule_app_2
         }
         private void RefreshData()
         {
-            using (SqlConnection conn = new SqlConnection(schedule_app_2.Helper.Common.Connstring))
+            using (SqlConnection conn = new SqlConnection(Common.Connstring))
             {
                 conn.Open();
                 var query = @"SELECT [depIdx]
@@ -193,6 +194,7 @@ namespace schedule_app_2
                 DgvDepartment.Columns[0].HeaderText = "부서번호";
                 DgvDepartment.Columns[1].HeaderText = "부서명";
 
+                DgvDepartment.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 DgvDepartment.Columns[0].Width = 80;
                 DgvDepartment.Columns[1].Width = 90;
             }

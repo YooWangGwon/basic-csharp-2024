@@ -1,4 +1,5 @@
 using schedule_app_2;
+using schedule_app_2.Helper;
 using System.Data;
 using System.Data.SqlClient;
 using System.Timers;
@@ -63,7 +64,7 @@ namespace schedule_app
             var answer = MessageBox.Show(this, "정말 삭제하시겠습니까?", "삭제 여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (answer == DialogResult.No) return;
 
-            using (SqlConnection conn = new SqlConnection(schedule_app_2.Helper.Common.Connstring))
+            using (SqlConnection conn = new SqlConnection(Common.Connstring))
             {
                 conn.Open();
                 var query = "DELETE FROM todotbl WHERE TodoIdx = @TodoIdx";
@@ -96,7 +97,7 @@ namespace schedule_app
         // 등록 버튼 클릭 이벤트 핸들러
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(schedule_app_2.Helper.Common.Connstring))
+            using (SqlConnection conn = new SqlConnection(Common.Connstring))
             {
                 conn.Open();
 
@@ -246,7 +247,7 @@ namespace schedule_app
         // 완료버튼 클릭
         private void BtnComplete_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(schedule_app_2.Helper.Common.Connstring))
+            using (SqlConnection conn = new SqlConnection(Common.Connstring))
             {
                 conn.Open();
                 var query = "UPDATE todotbl SET Complete = 'Y' WHERE todoIdx = @todoIdx";
@@ -304,7 +305,7 @@ namespace schedule_app
         {
             selection = McrDate.SelectionStart;
 
-            using (SqlConnection conn = new SqlConnection(schedule_app_2.Helper.Common.Connstring))
+            using (SqlConnection conn = new SqlConnection(Common.Connstring))
             {
                 conn.Open();
                 var query = @"SELECT TodoIdx
@@ -381,6 +382,14 @@ namespace schedule_app
         private void MnuDepartment_Click(object sender, EventArgs e)
         {
             FrmDepartment frm = new FrmDepartment();
+            frm.ShowDialog();
+        }
+
+        private void MnuIncomplete_Click(object sender, EventArgs e)
+        {
+            FrmIncomplete frm = new FrmIncomplete(this);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.TopMost = true; // 가장 윈도우화면 상단에
             frm.ShowDialog();
         }
     }

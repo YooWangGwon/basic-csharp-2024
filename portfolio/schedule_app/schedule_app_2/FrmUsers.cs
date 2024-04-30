@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using schedule_app_2.Helper;
 
 namespace schedule_app_2
 {
@@ -66,7 +67,7 @@ namespace schedule_app_2
             try
             {
 
-                using (SqlConnection conn = new SqlConnection(Helper.Common.Connstring))
+                using (SqlConnection conn = new SqlConnection(Common.Connstring))
                 {
                     var query = "";
                     conn.Open();
@@ -166,7 +167,7 @@ namespace schedule_app_2
                 var answer = MessageBox.Show(this, "정말 삭제하시겠습니까?", "삭제 여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (answer == DialogResult.No) return;
 
-                using (SqlConnection conn = new SqlConnection(Helper.Common.Connstring))
+                using (SqlConnection conn = new SqlConnection(Common.Connstring))
                 {
                     conn.Open();
                     var query = "DELETE FROM usertbl WHERE userIdx = @userIdx";
@@ -214,7 +215,7 @@ namespace schedule_app_2
         }
         private void RefreshData()
         {
-            using (SqlConnection conn = new SqlConnection(schedule_app_2.Helper.Common.Connstring))
+            using (SqlConnection conn = new SqlConnection(Common.Connstring))
             {
                 conn.Open();
                 var query = @"SELECT [userIdx]
@@ -240,6 +241,9 @@ namespace schedule_app_2
                 DgvUsers.Columns[4].HeaderText = "아이디";
                 DgvUsers.Columns[5].HeaderText = "패스워드";
 
+                DgvUsers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                DgvUsers.Columns[0].Width = 60;
+                DgvUsers.Columns[3].Width = 80;
                 DgvUsers.Columns[2].Visible = false;
             }
         }   // DgvUsers 데이터 갱신용
@@ -247,7 +251,7 @@ namespace schedule_app_2
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(Helper.Common.Connstring))
+                using (SqlConnection conn = new SqlConnection(Common.Connstring))
                 {
                     conn.Open();
 

@@ -1,4 +1,5 @@
 ﻿using schedule_app;
+using schedule_app_2.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,7 +78,7 @@ namespace schedule_app_2
             string chkUserId = string.Empty;    // DB에서 넘어온 값
             string chkPassword = string.Empty;
 
-            using (SqlConnection conn = new SqlConnection(Helper.Common.Connstring))
+            using (SqlConnection conn = new SqlConnection(Common.Connstring))
             {
                 conn.Open();
 

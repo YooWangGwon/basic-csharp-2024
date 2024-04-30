@@ -60,6 +60,7 @@ namespace schedule_app
             관리ToolStripMenuItem = new ToolStripMenuItem();
             MnuUsers = new ToolStripMenuItem();
             MnuDepartment = new ToolStripMenuItem();
+            MnuIncomplete = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)DgvTodo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -373,7 +374,7 @@ namespace schedule_app
             // 
             // 관리ToolStripMenuItem
             // 
-            관리ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MnuUsers, MnuDepartment });
+            관리ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MnuUsers, MnuDepartment, MnuIncomplete });
             관리ToolStripMenuItem.Name = "관리ToolStripMenuItem";
             관리ToolStripMenuItem.Size = new Size(43, 20);
             관리ToolStripMenuItem.Text = "관리";
@@ -393,6 +394,13 @@ namespace schedule_app
             MnuDepartment.Size = new Size(180, 22);
             MnuDepartment.Text = "부서 관리";
             MnuDepartment.Click += MnuDepartment_Click;
+            // 
+            // MnuIncomplete
+            // 
+            MnuIncomplete.Name = "MnuIncomplete";
+            MnuIncomplete.Size = new Size(180, 22);
+            MnuIncomplete.Text = "전체 미완료 일정";
+            MnuIncomplete.Click += MnuIncomplete_Click;
             // 
             // MainFrm
             // 
@@ -457,5 +465,6 @@ namespace schedule_app
         private TextBox TxtDate;
         private Label label6;
         private ToolStripMenuItem MnuDepartment;
+        private ToolStripMenuItem MnuIncomplete;
     }
 }
